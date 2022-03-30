@@ -1,22 +1,29 @@
 # MCD
 
-USER: name, password, email, role, address, bakery_id
-belongs to, 0N BAKERY, 1N USER
-BAKERY: name, address, profile_img, phone_number, rating, status, user_id
+favorites, ON USER, ON BAKERY
+BAKERY: bakery_identifier, name, address, zip_code, profile_img, phone_number, rating, status, delivery_fees, delivery_time
+sells, 1N PRODUCT, 0N BAKERY
+::
 
+USER: user_identifier, name, password, email, role, address
+owns, 11 BAKERY, 0N USER
+PRODUCT: product_identifier, name, price, description, picture
 is tagged by, 0N PRODUCT, 0N TAG
-PRODUCT: name, price, description, picture, category_id
-sells, 0N PRODUCT, 0N BAKERY
-
 TAG: name
+
+can make, ON USER, 11 ORDERS
+ORDERS: order_identifier, total_price, order_date
+have, 1N ORDERS, 0N PRODUCT
 relates to, 11 PRODUCT, 0N CATEGORY
 CATEGORY: name
 
 # MLD
 
-USER ( name, password, email, role, address, bakery_id )
-belongs to ( name, name.1 )
-BAKERY ( name, address, profile_img, phone_number, rating, status, user_id )
-is tagged by ( name, name.1 )
-PRODUCT ( name, price, description, picture, category_id, name.1 )
-sells ( name, name.1 )
+favorites ( user_identifier, bakery_identifier )
+BAKERY ( bakery_identifier, name, address, zip_code, profile_img, phone_number, rating, status, delivery_fees, delivery_time, user_identifier )
+sells ( product_identifier, bakery_identifier )
+USER ( user_identifier, name, password, email, role, address )
+PRODUCT ( product_identifier, name, price, description, picture, name.1 )
+is tagged by ( product_identifier, name )
+ORDERS ( order_identifier, total_price, order_date, user_identifier )
+have ( order_identifier, product_identifier )
