@@ -32,7 +32,7 @@
 
 |Champ|Type|Spécificités|Description|
 |-|-|-|-|
-|id|INT|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|Category ID|
+|category_identifier|INT|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|Category ID|
 |name|VARCHAR(64)|NOT NULL,|Category name|
 
 
@@ -51,7 +51,7 @@
 
 |Champ|Type|Spécificités|Description|
 |-|-|-|-|
-|id|INT|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|Tag ID|
+|tag_identifier|INT|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|Tag ID|
 |name|VARCHAR(64)|NOT NULL,|Tag name|
 
 ## ORDER (`commande`)
@@ -63,3 +63,10 @@
 |order_date|TIMESTAMP|NOT NULL, DEFAULT CURRENT_TIMESTAMP|Order date|
 |user_id|ENTITY|NOT NULL| User ID to connect to Order
 
+## RELATION ENTRE ENTITIES(`association`)
+
+|Champ|Type|Spécificités|Description|
+|-|-|-|-|
+|product_tag|ENTITY|PRIMARY KEY, NOT NULL, UNSIGNED|le tag du produit|
+|user_bakery|ENTITY|PRIMARY KEY, NOT NULL, UNSIGNED|le propriétaire de la boulangerie
+|order_product|ENTITY|PRIMARY KEY, NOT NULL, UNSIGNED|la commande du produit|
