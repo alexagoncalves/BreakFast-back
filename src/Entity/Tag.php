@@ -6,6 +6,7 @@ use App\Repository\TagRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=TagRepository::class)
@@ -16,16 +17,19 @@ class Tag
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"get_tag_list", "get_tag_by_id"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=64)
+     * @Groups({"get_tag_list", "get_tag_by_id"})
      */
     private $name;
 
     /**
      * @ORM\ManyToMany(targetEntity=Product::class, mappedBy="tag")
+     * @Groups({"get_tag_list", "get_tag_by_id"})
      */
     private $products;
 

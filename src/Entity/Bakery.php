@@ -6,6 +6,7 @@ use App\Repository\BakeryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=BakeryRepository::class)
@@ -16,57 +17,68 @@ class Bakery
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"get_bakeries_list", "get_bakery_by_id"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"get_bakeries_list", "get_bakery_by_id"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"get_bakeries_list", "get_bakery_by_id"})
      */
     private $address;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"get_bakeries_list", "get_bakery_by_id"})
      */
     private $profile_img;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"get_bakeries_list", "get_bakery_by_id"})
      */
     private $phone_number;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"get_bakeries_list", "get_bakery_by_id"})
      */
     private $rating;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"get_bakeries_list", "get_bakery_by_id"})
      */
     private $status;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups({"get_bakeries_list", "get_bakery_by_id"})
      */
     private $delivery_fees;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"get_bakeries_list", "get_bakery_by_id"})
      */
     private $delivery_time;
 
     /**
      * @ORM\OneToMany(targetEntity=Product::class, mappedBy="bakery")
+     * @Groups({"get_bakeries_list", "get_bakery_by_id"})
      */
     private $product;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="bakeries")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"get_bakeries_list", "get_bakery_by_id"})
      */
     private $user;
 
