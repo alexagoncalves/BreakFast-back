@@ -4,12 +4,14 @@ namespace App\DataFixtures;
 
 use App\Entity\Bakery;
 use App\Entity\Category;
+use App\Entity\Order;
 use App\Entity\Product;
 use App\Entity\Tag;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
+use DateTime;
 
 class AppFixtures extends Fixture
 {
@@ -74,40 +76,64 @@ class AppFixtures extends Fixture
 
             $productObjects[] = $product;
             $manager->persist($product);
-
-            // Liste des tags stockée dans un tableau
-            $tags = [
-                'bio',
-                'vegan',
-                'sans_gluten',
-                'anniversaire',
-            ];
-
-            // Contient les objets des tags crée
-            $tagObjects = [];
-
-            // parcourir le tableau des tags
-            foreach ($tags as $currentTag) {
-                $tag = new Tag();
-                $tag->setName($currentTag);
-
-                $tagObjects[] = $tag;
-                $manager->persist($tag);
-            }
-
-            $user = new User();
-            $user->setEmail('admin@admin.com');
-            $user->setAddress($faker->address());
-            $user->setName($faker->name());
-            $user->setZipCode($faker->zip_code());
-            $user->setPassword('$2y$13$A/CUvaxJfGqkKZhZ2TfiHOA0q4hlDhDmMkMRXMaNLLs7wcaXkhQZ2');
-            // password is admin
-            // $2y$13$mc9q6YGcasPeb4aYFMPanOnCql.LjbtbANDDghzZn/UVGm1l7MheG
-            $user->setRole('ROLE_ADMIN');
-
-            $manager->persist($user);
-
-            $manager->flush();
         }
+
+        // Liste des tags stockée dans un tableau
+        $tags = [
+            'bio',
+            'vegan',
+            'sans_gluten',
+            'anniversaire',
+        ];
+
+        // Contient les objets des tags crée
+        $tagObjects = [];
+
+        // Parcourir le tableau des tags
+        foreach ($tags as $currentTag) {
+            $tag = new Tag();
+            $tag->setName($currentTag);
+
+            $tagObjects[] = $tag;
+            $manager->persist($tag);
+        }
+
+        // Création des utilisateurs Admin et Partner
+        $user = new User();
+        $user->setEmail('admin@breakfast.com');
+        $user->setAddress($faker->address());
+        $user->setName($faker->name());
+        $user->setZipCode($faker->zip_code());
+        $user->setPassword('$2y$13$A/CUvaxJfGqkKZhZ2TfiHOA0q4hlDhDmMkMRXMaNLLs7wcaXkhQZ2');
+        // password is admin
+        $user->setRoles(['ROLE_ADMIN']);
+
+        $manager->persist($user);
+
+        $user = new User();
+        $user->setEmail('partner@breakfast.com');
+        $user->setAddress($faker->address());
+        $user->setName($faker->name());
+        $user->setZipCode($faker->zip_code());
+        $user->setPassword('$2y$13$QB45Fst6jM6r7vb77aX8Ie6VckkyJCW.Ollgm5oZ/ehmEwff.sNmO');
+        // password is partner
+        $user->setRoles(['ROLE_PARTNER']);
+
+        $manager->persist($user);
+
+        // Création des Orders
+        $orderNumber = 10;
+        $orderObjects = [];
+
+        for ($i = 0; $i < $orderNumber; $i++) {
+            $order = new Order;
+            $order->setTotalPrice($faker->randomFloat(2, 1, 100));
+            $order->setOrderDate(new DateTime());
+
+            $orderObjects[] = $order;
+            $manager->persist($order);
+        }
+
+        $manager->flush();
     }
 }
