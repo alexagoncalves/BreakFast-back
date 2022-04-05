@@ -20,6 +20,29 @@ class AppFixtures extends Fixture
 
         $faker = Factory::create();
 
+        // Création des utilisateurs Admin et Partner
+        $user = new User();
+        $user->setEmail('admin@breakfast.com');
+        $user->setAddress($faker->address());
+        $user->setName($faker->name());
+        $user->setZipCode($faker->randomNumber(5, true));
+        $user->setPassword('$2y$13$A/CUvaxJfGqkKZhZ2TfiHOA0q4hlDhDmMkMRXMaNLLs7wcaXkhQZ2');
+        // password is admin
+        $user->setRoles(['ROLE_ADMIN']);
+
+        $manager->persist($user);
+
+        $user = new User();
+        $user->setEmail('partner@breakfast.com');
+        $user->setAddress($faker->address());
+        $user->setName($faker->name());
+        $user->setZipCode($faker->randomNumber(5, true));
+        $user->setPassword('$2y$13$QB45Fst6jM6r7vb77aX8Ie6VckkyJCW.Ollgm5oZ/ehmEwff.sNmO');
+        // password is partner
+        $user->setRoles(['ROLE_PARTNER']);
+
+        $manager->persist($user);
+
         // Liste des catégories stockée dans un tableau
         $categories = [
             'gâteaux',
@@ -53,11 +76,12 @@ class AppFixtures extends Fixture
             $bakery->setName($faker->name());
             $bakery->setAddress($faker->address());
             $bakery->setProfileImg('https://picsum.photos/id/' . ($i + 1) . '/200/300');
-            $bakery->setPhoneNumber($faker->phone_number());
-            $bakery->setRating($faker->rating());
-            $bakery->setStatus($faker->status());
-            $bakery->setDeliveryFees($faker->delivery_fees());
-            $bakery->setDeliveryTime($faker->delivery_time());
+            $bakery->setPhoneNumber($faker->randomNumber(9, true));
+            $bakery->setRating($faker->numberBetween(0, 5));
+            $bakery->setStatus($faker->numberBetween(0, 1));
+            $bakery->setDeliveryFees($faker->randomFloat(2, 0, 5));
+            $bakery->setDeliveryTime($faker->numberBetween(1, 30));
+            $bakery->setUser($user);
 
             $bakeryObjects[] = $bakery;
             $manager->persist($bakery);
@@ -70,9 +94,11 @@ class AppFixtures extends Fixture
         for ($i = 0; $i < $productNumber; $i++) {
             $product = new Product;
             $product->setName($faker->name());
-            $product->setPrice($faker->price());
-            $product->setDescription($faker->description());
+            $product->setPrice($faker->randomFloat(2, 0, 10));
+            $product->setDescription($faker->realText(150));
             $product->setPicture('https://picsum.photos/id/' . ($i + 1) . '/200/300');
+            $product->setBakery($bakery);
+            $product->setCategory($category);
 
             $productObjects[] = $product;
             $manager->persist($product);
@@ -98,29 +124,6 @@ class AppFixtures extends Fixture
             $manager->persist($tag);
         }
 
-        // Création des utilisateurs Admin et Partner
-        $user = new User();
-        $user->setEmail('admin@breakfast.com');
-        $user->setAddress($faker->address());
-        $user->setName($faker->name());
-        $user->setZipCode($faker->zip_code());
-        $user->setPassword('$2y$13$A/CUvaxJfGqkKZhZ2TfiHOA0q4hlDhDmMkMRXMaNLLs7wcaXkhQZ2');
-        // password is admin
-        $user->setRoles(['ROLE_ADMIN']);
-
-        $manager->persist($user);
-
-        $user = new User();
-        $user->setEmail('partner@breakfast.com');
-        $user->setAddress($faker->address());
-        $user->setName($faker->name());
-        $user->setZipCode($faker->zip_code());
-        $user->setPassword('$2y$13$QB45Fst6jM6r7vb77aX8Ie6VckkyJCW.Ollgm5oZ/ehmEwff.sNmO');
-        // password is partner
-        $user->setRoles(['ROLE_PARTNER']);
-
-        $manager->persist($user);
-
         // Création des Orders
         $orderNumber = 10;
         $orderObjects = [];
@@ -129,6 +132,7 @@ class AppFixtures extends Fixture
             $order = new Order;
             $order->setTotalPrice($faker->randomFloat(2, 1, 100));
             $order->setOrderDate(new DateTime());
+            $order->setUser($user);
 
             $orderObjects[] = $order;
             $manager->persist($order);
