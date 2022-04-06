@@ -38,7 +38,7 @@ class BakeryController extends AbstractController
      * @Route("/api/bakery/{id<\d+>}", name="api_bakery_by_id", methods={"GET"})
      * @return Response
      */
-    public function getItem(Bakery $bakery = null) :Response
+    public function bakeryById(Bakery $bakery = null) :Response
     {
         // 404
         if ($bakery === null) {

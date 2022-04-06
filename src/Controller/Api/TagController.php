@@ -38,7 +38,7 @@ class TagController extends AbstractController
      * @Route("/api/tag/{id<\d+>}", name="api_tag_by_id", methods={"GET"})
      * @return Response
      */
-    public function getItem(Tag $tag = null) :Response
+    public function tagById(Tag $tag = null) :Response
     {
         // 404
         if ($tag === null) {
