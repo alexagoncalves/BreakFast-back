@@ -7,10 +7,14 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+<<<<<<< HEAD
 
+=======
+>>>>>>> api-bakery-tag
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
+ * 
  */
 class Product
 {
@@ -25,8 +29,12 @@ class Product
 
     /**
      * @ORM\Column(type="string", length=255)
+<<<<<<< HEAD
      * @Groups({"api_products_list"})
      * 
+=======
+     * @Groups({"get_bakeries_list", "get_bakery_by_id"})
+>>>>>>> api-bakery-tag
      */
     private $name;
 

@@ -7,7 +7,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+<<<<<<< HEAD
 
+=======
+>>>>>>> api-bakery-tag
 
 /**
  * @ORM\Entity(repositoryClass=BakeryRepository::class)
@@ -18,73 +21,108 @@ class Bakery
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"get_bakeries_list", "get_bakery_by_id"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+<<<<<<< HEAD
      * @Groups({"api_products_list"})
      * 
+=======
+     * @Groups({"get_bakeries_list", "get_bakery_by_id"})
+>>>>>>> api-bakery-tag
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+<<<<<<< HEAD
      * @Groups({"api_products_list"})
      * 
+=======
+     * @Groups({"get_bakeries_list", "get_bakery_by_id"})
+>>>>>>> api-bakery-tag
      */
     private $address;
 
     /**
      * @ORM\Column(type="string", length=255)
+<<<<<<< HEAD
      * @Groups({"api_products_list"})
      * 
+=======
+     * @Groups({"get_bakeries_list", "get_bakery_by_id"})
+>>>>>>> api-bakery-tag
      */
     private $profile_img;
 
     /**
      * @ORM\Column(type="integer")
+<<<<<<< HEAD
      * @Groups({"api_products_list"})
      * 
+=======
+     * @Groups({"get_bakeries_list", "get_bakery_by_id"})
+>>>>>>> api-bakery-tag
      */
     private $phone_number;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+<<<<<<< HEAD
      * @Groups({"api_products_list"})
      * 
+=======
+     * @Groups({"get_bakeries_list", "get_bakery_by_id"})
+>>>>>>> api-bakery-tag
      */
     private $rating;
 
     /**
      * @ORM\Column(type="integer")
+<<<<<<< HEAD
      * @Groups({"api_products_list"})
      * 
+=======
+     * @Groups({"get_bakeries_list", "get_bakery_by_id"})
+>>>>>>> api-bakery-tag
      */
     private $status;
 
     /**
      * @ORM\Column(type="float")
+<<<<<<< HEAD
      * @Groups({"api_products_list"})
      * 
+=======
+     * @Groups({"get_bakeries_list", "get_bakery_by_id"})
+>>>>>>> api-bakery-tag
      */
     private $delivery_fees;
 
     /**
      * @ORM\Column(type="integer")
+<<<<<<< HEAD
      * @Groups({"api_products_list"})
      * 
+=======
+     * @Groups({"get_bakeries_list", "get_bakery_by_id"})
+>>>>>>> api-bakery-tag
      */
     private $delivery_time;
 
     /**
      * @ORM\OneToMany(targetEntity=Product::class, mappedBy="bakery")
+     * @Groups({"get_bakeries_list", "get_bakery_by_id"})
      */
     private $product;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="bakeries")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"get_bakeries_list", "get_bakery_by_id"})
      */
     private $user;
 
