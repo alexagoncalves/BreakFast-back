@@ -19,12 +19,17 @@ class Category
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @Groups({"api_categories_list"})
+     * @Groups({"api_products_list"})
+
+     * 
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"api_categories_list"})
+     * @Groups({"api_products_list"})
+     * 
      * 
      */
     private $name;

@@ -23,41 +23,57 @@ class Bakery
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"api_products_list"})
+     * 
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"api_products_list"})
+     * 
      */
     private $address;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"api_products_list"})
+     * 
      */
     private $profile_img;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"api_products_list"})
+     * 
      */
     private $phone_number;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"api_products_list"})
+     * 
      */
     private $rating;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"api_products_list"})
+     * 
      */
     private $status;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups({"api_products_list"})
+     * 
      */
     private $delivery_fees;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"api_products_list"})
+     * 
      */
     private $delivery_time;
 
