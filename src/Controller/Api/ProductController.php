@@ -18,7 +18,7 @@ class ProductController extends AbstractController
     /**
      * @Route("/products")
      */
-    public function AllProducts(ProductRepository $productRepository): Response
+    public function allProducts(ProductRepository $productRepository): Response
     {
         $productsList = $productRepository->findAll();
 
@@ -40,7 +40,7 @@ class ProductController extends AbstractController
      * @param ProductRepository $productRepository
      * @return Response
      */
-    public function AllProductsByBakery(Bakery $bakery = null, int $id, ProductRepository $productRepository): Response
+    public function allProductsByBakery(Bakery $bakery = null, int $id, ProductRepository $productRepository): Response
     {
         
         // Préparation des données des produits avec méthode dql
