@@ -52,8 +52,10 @@ class ProductRepository extends ServiceEntityRepository
         $entityManager = $this->getEntityManager();
 
         $query = $entityManager->createQuery(
-            'SELECT p
+            'SELECT p, b, c
             FROM App\Entity\Product p
+            JOIN p.bakery b
+            JOIN p.category c
             WHERE p.bakery = :id'
         );
    
