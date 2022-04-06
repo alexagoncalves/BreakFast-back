@@ -44,6 +44,24 @@ class ProductRepository extends ServiceEntityRepository
             $this->_em->flush();
         }
     }
+/**
+ * Find all products by bakery_id
+ */
+    public function findAllByBakery($bakeryId)
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT p
+            FROM App\Entity\Product p
+            WHERE p.bakery = :id'
+        );
+   
+        $query->setParameter('id', $bakeryId);
+
+        return $query->getResult();
+
+    }
 
     // /**
     //  * @return Product[] Returns an array of Product objects

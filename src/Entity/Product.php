@@ -6,6 +6,8 @@ use App\Repository\ProductRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
@@ -16,43 +18,59 @@ class Product
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"api_products_list"})
+     * 
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"api_products_list"})
+     * 
      */
     private $name;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups({"api_products_list"})
+     * 
      */
     private $price;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"api_products_list"})
+     * 
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"api_products_list"})
+     * 
      */
     private $picture;
 
     /**
      * @ORM\ManyToOne(targetEntity=Bakery::class, inversedBy="product")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"api_products_list"})
+     * 
      */
     private $bakery;
 
     /**
      * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="products")
+     * @Groups({"api_products_list"})
+     * 
      */
     private $tag;
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"api_products_list"})
+     * 
      */
     private $category;
 
