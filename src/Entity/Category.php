@@ -20,7 +20,8 @@ class Category
      * @ORM\Column(type="integer")
      * @Groups({"api_categories_list"})
      * @Groups({"api_products_list"})
-
+     * @Groups({"get_category_by_id"})
+     * 
      * 
      */
     private $id;
@@ -29,7 +30,8 @@ class Category
      * @ORM\Column(type="string", length=255)
      * @Groups({"api_categories_list"})
      * @Groups({"api_products_list"})
-     * 
+     * @Groups({"get_category_by_id"})
+     *  
      * 
      */
     private $name;
