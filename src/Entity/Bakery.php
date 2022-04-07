@@ -34,7 +34,6 @@ class Bakery
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"api_products_list"})
-     * 
      * @Groups({"get_bakeries_list", "get_bakery_by_id"})
      */
     private $address;
@@ -42,7 +41,6 @@ class Bakery
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"api_products_list"})
-     * 
      * @Groups({"get_bakeries_list", "get_bakery_by_id"})
      */
     private $profile_img;
@@ -50,7 +48,6 @@ class Bakery
     /**
      * @ORM\Column(type="integer")
      * @Groups({"api_products_list"})
-     * 
      * @Groups({"get_bakeries_list", "get_bakery_by_id"})
      */
     private $phone_number;
@@ -58,7 +55,6 @@ class Bakery
     /**
      * @ORM\Column(type="integer", nullable=true)
      * @Groups({"api_products_list"})
-     * 
      * @Groups({"get_bakeries_list", "get_bakery_by_id"})
      */
     private $rating;
@@ -66,7 +62,6 @@ class Bakery
     /**
      * @ORM\Column(type="integer")
      * @Groups({"api_products_list"})
-     * 
      * @Groups({"get_bakeries_list", "get_bakery_by_id"})
      */
     private $status;
@@ -74,7 +69,6 @@ class Bakery
     /**
      * @ORM\Column(type="float")
      * @Groups({"api_products_list"})
-     * 
      * @Groups({"get_bakeries_list", "get_bakery_by_id"})
      */
     private $delivery_fees;
@@ -82,7 +76,6 @@ class Bakery
     /**
      * @ORM\Column(type="integer")
      * @Groups({"api_products_list"})
-     * 
      * @Groups({"get_bakeries_list", "get_bakery_by_id"})
      */
     private $delivery_time;
