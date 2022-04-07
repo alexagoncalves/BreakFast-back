@@ -28,6 +28,8 @@ class Bakery
      * @Groups({"api_products_list"})
      * @Groups ("api_user")
      * @Groups({"get_bakeries_list", "get_bakery_by_id"})
+     * @Groups({"api_user"})
+     * 
      */
     private $name;
 
