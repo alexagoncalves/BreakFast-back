@@ -19,14 +19,14 @@ class Bakery
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @Groups({"get_bakeries_list", "get_bakery_by_id"})
-     * @Groups({"api_user"})
-     * 
+     * @Groups ("api_user")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"api_products_list"})
+     * @Groups ("api_user")
      * @Groups({"get_bakeries_list", "get_bakery_by_id"})
      * @Groups({"api_user"})
      * 
