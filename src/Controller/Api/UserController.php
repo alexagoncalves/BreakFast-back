@@ -33,7 +33,7 @@ class UserController extends AbstractController
      * @Route("", name="create", methods="POST")
      * @return Response
      */
-    public function create(ManagerRegistry $doctrine,  UserPasswordHasherInterface $hasher, Request $request, UserRepository $userRepository, SerializerInterface $serializer): Response
+    public function newUser(ManagerRegistry $doctrine,  UserPasswordHasherInterface $hasher, Request $request, UserRepository $userRepository, SerializerInterface $serializer): Response
     {
         if (! $this->isGranted("ROLE_ADMIN"))
         {
@@ -73,7 +73,7 @@ class UserController extends AbstractController
      * @Route("/{id}", name="read", methods="GET", requirements={"id"="\d+"})
      * @return Response
      */
-    public function read(int $id, UserRepository $userRepository): Response
+    public function userById(int $id, UserRepository $userRepository): Response
     {
         // préparer les données
         $user = $userRepository->find($id);
@@ -97,7 +97,7 @@ class UserController extends AbstractController
      * @Route("", name="list", methods="GET")
      * @return Response
      */
-    public function list(UserRepository $userRepository): Response
+    public function userList(UserRepository $userRepository): Response
     {
         // préparer les données
         $userList = $userRepository->findAll();
