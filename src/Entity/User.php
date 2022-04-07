@@ -19,17 +19,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups ("api_user")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Groups ("get_user_item")
+     * @Groups ("api_user")
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
+     * @Groups ("api_user")
      */
     private $roles = [];
 
@@ -42,26 +44,31 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"get_bakeries_list", "get_bakery_by_id"})
+     * @Groups ("api_user")
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups ("api_user")
      */
     private $address;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups ("api_user")
      */
     private $zip_code;
 
     /**
      * @ORM\OneToMany(targetEntity=Bakery::class, mappedBy="user")
+     * @Groups ("api_user")
      */
     private $bakeries;
 
     /**
      * @ORM\OneToMany(targetEntity=Order::class, mappedBy="user")
+     * @Groups ("api_user")
      */
     private $orders;
 
