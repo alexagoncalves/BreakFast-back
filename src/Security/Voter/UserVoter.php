@@ -43,19 +43,19 @@ class UserVoter extends Voter
             case self::EDIT:
                 // logic to determine if the user can EDIT
                 // return true or false
-
+                
                 if ($user !== $subject->getUserIdentifier() && ! $this->security->isGranted('ROLE_ADMIN')) {
                     return false;
                 }
                 return true;
 
                 break;
-                
+
             case self::VIEW:
                 // logic to determine if the user can VIEW
                 // return true or false
-
-                if ($user !== $subject->getUserIdentifier() && ! $this->security->isGranted('ROLE_ADMIN')) {
+           
+                if ($user->getUserIdentifier() !== $subject->getUserIdentifier() && !$this->security->isGranted('ROLE_ADMIN')) {
                     return false;
                 }
                 return true;
