@@ -34,7 +34,6 @@ class BakeryController extends AbstractController
 
     /**
      * Method to get a bakery information using it's id
-     * 
      * @Route("/api/bakery/{id<\d+>}", name="api_bakery_by_id", methods={"GET"})
      * @return Response
      */

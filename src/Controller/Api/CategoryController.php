@@ -8,16 +8,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-
-/**
- * @Route("/api", name="app_api_category")
- */
 class CategoryController extends AbstractController
 {
     /**
      * Get list of all categories
-     * 
-     * @Route("/category", methods = {"GET"})
+     * @Route("/api/category", name="api_category", methods={"GET"})
      * @return Response
      */
     public function categoriesList(CategoryRepository $categoryRepository): Response
@@ -37,8 +32,7 @@ class CategoryController extends AbstractController
 
     /**
      * Method to get a category information using it's id
-     * 
-     * @Route("/category/{id}", name="api_category_by_id", requirements={"id"="\d+"}, methods={"GET"})
+     * @Route("/api/category/{id}", name="api_category_by_id", requirements={"id"="\d+"}, methods={"GET"})
      * @return Response
      */
     public function categoryById(Category $category = null): Response

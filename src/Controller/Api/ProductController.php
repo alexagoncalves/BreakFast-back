@@ -10,13 +10,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/api", name="app_api_products", requirements={"id"="\d+"}, methods={"GET"})
- */
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/products")
+     * Method to get the list of all products
+     * @Route("/api/products", name="api_products")
      */
     public function productsList(ProductRepository $productRepository): Response
     {
@@ -33,9 +31,8 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/bakery/{id}/products")
+     * @Route("/api/bakery/{id}/products", name="api_bakery_id_products")
      * Get all products by bakery and return into Json
-     *
      * @param Product $product
      * @param ProductRepository $productRepository
      * @return Response
