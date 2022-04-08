@@ -27,7 +27,6 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  */
 class UserController extends AbstractController
 {
-    
     /**
      * Creates a user
      * @Route("", name="create", methods="POST")
@@ -35,15 +34,6 @@ class UserController extends AbstractController
      */
     public function newUser(ManagerRegistry $doctrine,  UserPasswordHasherInterface $hasher, Request $request, UserRepository $userRepository, SerializerInterface $serializer): Response
     {
-        if (! $this->isGranted("ROLE_ADMIN"))
-        {
-            $data = 
-            [
-                'error' => true,
-                'msg' => 'Il faut être admin pour accéder à ce endpoint ( You SHALL not PASS )'
-            ];
-            return $this->json($data, Response::HTTP_FORBIDDEN);
-        }
         // récupérer les données depuis la requete
         $userAsJson = $request->getContent();
 
@@ -64,7 +54,6 @@ class UserController extends AbstractController
             'id' => $user->getId(),
         ];
 
-
         return $this->json($data, Response::HTTP_CREATED);
     }
 
@@ -75,6 +64,15 @@ class UserController extends AbstractController
      */
     public function userById(int $id, UserRepository $userRepository): Response
     {
+        if (! $this->isGranted("ROLE_USER"))
+        {
+            $data = 
+            [
+                'error' => true,
+                'msg' => 'Il faut être connecté pour accéder à cette page.'
+            ];
+            return $this->json($data, Response::HTTP_FORBIDDEN);
+        }
         // préparer les données
         $user = $userRepository->find($id);
 
@@ -90,7 +88,6 @@ class UserController extends AbstractController
 
         return $this->json($user, Response::HTTP_OK, [], ['groups' => "api_user"]);
     }
-
     
     /**
      * Method to get a list of all users
