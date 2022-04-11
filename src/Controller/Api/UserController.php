@@ -73,8 +73,9 @@ class UserController extends AbstractController
             ];
             return $this->json($data, Response::HTTP_FORBIDDEN);
         }
+
         $this->denyAccessUnlessGranted('PROFILE_VIEW', $user);
-        
+
         // préparer les données
         $user = $userRepository->find($id);
 
