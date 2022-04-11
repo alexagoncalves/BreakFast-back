@@ -62,7 +62,7 @@ class UserController extends AbstractController
      * @Route("/{id}", name="read", methods="GET", requirements={"id"="\d+"})
      * @return Response
      */
-    public function userById(int $id, UserRepository $userRepository): Response
+    public function userById(User $user, int $id, UserRepository $userRepository): Response
     {
         if (! $this->isGranted("ROLE_USER"))
         {
@@ -73,6 +73,9 @@ class UserController extends AbstractController
             ];
             return $this->json($data, Response::HTTP_FORBIDDEN);
         }
+
+        $this->denyAccessUnlessGranted('PROFILE_VIEW', $user);
+
         // préparer les données
         $user = $userRepository->find($id);
 
