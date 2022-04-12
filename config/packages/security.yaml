@@ -26,10 +26,6 @@ security:
                 check_path: /api/login_check
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
-            logout:
-                path: app_logout
-                # where to redirect after logout
-                # target: app_any_route
 
         api:
             pattern:   ^/api
@@ -38,6 +34,11 @@ security:
 
         main:
             custom_authenticator: App\Security\LoginBackofficeAuthenticator
+            logout:
+                path: app_backoffice_logout
+                # where to redirect after logout
+                target: app_backoffice_login
+                invalidate_session: true
             lazy: true
             provider: app_user_provider
 
@@ -51,6 +52,8 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/api/login, roles: PUBLIC_ACCESS }
+        - { path: ^/backoffice/login, roles: PUBLIC_ACCESS }
+        - { path: ^/backoffice/, roles: ROLE_ADMIN }
         #- { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
     
     role_hierarchy:

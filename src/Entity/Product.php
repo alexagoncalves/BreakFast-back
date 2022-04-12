@@ -20,14 +20,12 @@ class Product
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @Groups({"api_products_list"})
-     * 
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"api_products_list"})
-     * 
      * @Groups({"get_bakeries_list", "get_bakery_by_id"})
      */
     private $name;
@@ -35,21 +33,18 @@ class Product
     /**
      * @ORM\Column(type="float")
      * @Groups({"api_products_list"})
-     * 
      */
     private $price;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"api_products_list"})
-     * 
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"api_products_list"})
-     * 
      */
     private $picture;
 
@@ -57,14 +52,12 @@ class Product
      * @ORM\ManyToOne(targetEntity=Bakery::class, inversedBy="product")
      * @ORM\JoinColumn(nullable=false)
      * @Groups({"api_products_list"})
-     * 
      */
     private $bakery;
 
     /**
      * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="products")
      * @Groups({"api_products_list"})
-     * 
      */
     private $tag;
 
@@ -72,7 +65,6 @@ class Product
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")
      * @ORM\JoinColumn(nullable=false)
      * @Groups({"api_products_list"})
-     * 
      */
     private $category;
 

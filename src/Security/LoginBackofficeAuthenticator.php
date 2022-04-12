@@ -50,7 +50,7 @@ class LoginBackofficeAuthenticator extends AbstractLoginFormAuthenticator
         }
 
         // For example:
-        return new RedirectResponse($this->urlGenerator->generate('app_backoffice_bakery'));
+        return new RedirectResponse($this->urlGenerator->generate('app_backoffice_bakery_index'));
         //throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 
