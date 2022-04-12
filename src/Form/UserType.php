@@ -12,6 +12,8 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class UserType extends AbstractType
 {
@@ -25,7 +27,13 @@ class UserType extends AbstractType
             ->add('email', EmailType::class)
 
             ->add('password', PasswordType::class, [
-                'label' => 'Mot de passe'
+                'label' => 'Mot de passe',
+                'constraints' => [
+                    new NotBlank(),
+                    new Regex(
+                        "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/",
+                        "Le mot de passe doit contenir au minimum 8 caractères, une majuscule, un chiffre et un caractère spécial"
+                    )]
             ])
 
             ->add('address', TextType::class, [
