@@ -30,8 +30,7 @@
                 <td class="align-middle text-center">
                     <a class="btn btn-outline-light text-uppercase" href="{{ path('app_backoffice_product_show', {'id': product.id}) }}">show</a>
                     <a class="btn btn-outline-light text-uppercase" href="{{ path('app_backoffice_product_edit', {'id': product.id}) }}">edit</a>
-                    <td class="align-middle text-center">{{ include('backoffice/product/_delete_form.html.twig') }}
-                </td>
+                    <td class="align-middle text-center" id="delete">{{ include('backoffice/product/_delete_form.html.twig') }}</td>
                 </td>
             </tr>
         {% else %}
