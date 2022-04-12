@@ -21,15 +21,11 @@ use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-/**
- * 
- * @Route("/api/user", name="api_user_")
- */
 class UserController extends AbstractController
 {
     /**
      * Creates a user
-     * @Route("", name="create", methods="POST")
+     * @Route("/api/user", name="api_user_create", methods="POST")
      * @return Response
      */
     public function newUser(ManagerRegistry $doctrine,  UserPasswordHasherInterface $hasher, Request $request, UserRepository $userRepository, SerializerInterface $serializer): Response
@@ -59,7 +55,7 @@ class UserController extends AbstractController
 
     /**
      * Get a user details
-     * @Route("/{id}", name="read", methods="GET", requirements={"id"="\d+"})
+     * @Route("/api/user/{id}", name="api_user_read", methods="GET", requirements={"id"="\d+"})
      * @return Response
      */
     public function userById(User $user, int $id, UserRepository $userRepository): Response
@@ -94,7 +90,7 @@ class UserController extends AbstractController
     
     /**
      * Method to get a list of all users
-     * @Route("", name="list", methods="GET")
+     * @Route("/api/user", name="api_user_list", methods="GET")
      * @return Response
      */
     public function userList(UserRepository $userRepository): Response

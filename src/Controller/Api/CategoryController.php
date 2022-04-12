@@ -11,13 +11,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class CategoryController extends AbstractController
 {
     /**
-     * Get list of all categories
+     * Method to get the list of all categories
      * @Route("/api/category", name="api_category", methods={"GET"})
      * @return Response
      */
     public function categoriesList(CategoryRepository $categoryRepository): Response
     {
-        // préparation des données
         $categoriesList = $categoryRepository->findAll();
 
         return $this->json(
@@ -37,7 +36,7 @@ class CategoryController extends AbstractController
      */
     public function categoryById(Category $category = null): Response
     {
-        // Vérification si aucune catégorie trouvée
+        // if the id doesn't correspond to any category
         if (is_null($category)) {
             return $this->json(['error' => 'categorie non trouvée.'], Response::HTTP_NOT_FOUND);
         }

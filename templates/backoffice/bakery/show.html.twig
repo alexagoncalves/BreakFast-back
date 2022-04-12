@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bakery{% endblock %}
+
+{% block body %}
+    <h1 class="text-uppercase">Bakery</h1>
+
+    {{ include('backoffice/bakery/_delete_form.html.twig') }}
+
+    <a class="btn btn-outline-light text-uppercase mb-2" href="{{ path('app_backoffice_bakery_index') }}">back to list</a>
+
+    <a class="btn btn-outline-light text-uppercase mb-2" href="{{ path('app_backoffice_bakery_edit', {'id': bakery.id}) }}">edit</a>
+
+
+    <table class="table table-dark table-striped">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td class="align-middle">{{ bakery.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ bakery.name }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ bakery.address }}</td>
+            </tr>
+            <tr>
+                <th>Profile_img</th>
+                <td>{{ bakery.profileImg }}</td>
+            </tr>
+            <tr>
+                <th>Phone_number</th>
+                <td>{{ bakery.phoneNumber }}</td>
+            </tr>
+            <tr>
+                <th>Rating</th>
+                <td>{{ bakery.rating }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ bakery.status }}</td>
+            </tr>
+            <tr>
+                <th>Delivery_fees</th>
+                <td>{{ bakery.deliveryFees }}</td>
+            </tr>
+            <tr>
+                <th>Delivery_time</th>
+                <td>{{ bakery.deliveryTime }}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+{% endblock %}

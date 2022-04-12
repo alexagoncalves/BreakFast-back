@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bakery index{% endblock %}
+
+{% block body %}
+    <h1 class="text-uppercase">Bakery index</h1>
+
+    <a class="btn btn-outline-light text-uppercase" href="{{ path('app_backoffice_bakery_new') }}">Create new</a>
+
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th class="text-center">Id</th>
+                <th class="text-center">Name</th>
+                <th class="text-center">Address</th>
+                <th class="text-center">Profile_img</th>
+                <th class="text-center">Phone_number</th>
+                <th class="text-center">Rating</th>
+                <th class="text-center">Status</th>
+                <th class="text-center">Delivery_fees</th>
+                <th class="text-center">Delivery_time</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for bakery in bakeries %}
+            <tr>
+                <td class="align-middle text-center">{{ bakery.id }}</td>
+                <td class="align-middle text-center">{{ bakery.name }}</td>
+                <td class="align-middle text-center">{{ bakery.address }}</td>
+                <td class="align-middle text-center">{{ bakery.profileImg }}</td>
+                <td class="align-middle text-center">{{ bakery.phoneNumber }}</td>
+                <td class="align-middle text-center">{{ bakery.rating }}</td>
+                <td class="align-middle text-center">{{ bakery.status }}</td>
+                <td class="align-middle text-center">{{ bakery.deliveryFees }}</td>
+                <td class="align-middle text-center">{{ bakery.deliveryTime }}</td>
+                <td class="align-middle text-center">
+                    <a class="btn btn-outline-light mb-2 text-uppercase" href="{{ path('app_backoffice_bakery_show', {'id': bakery.id}) }}">show</a>
+                    <a class="btn btn-outline-light text-uppercase" href="{{ path('app_backoffice_bakery_edit', {'id': bakery.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

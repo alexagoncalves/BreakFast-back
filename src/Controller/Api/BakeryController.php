@@ -17,17 +17,12 @@ class BakeryController extends AbstractController
      */
     public function bakeryList(BakeryRepository $bakeryRepository): Response
     {
-        // On va chercher les données
         $bakeryList = $bakeryRepository->findAll();
 
         return $this->json(
-            // Les données à sérialiser (à convertir en JSON)
             $bakeryList,
-            // Le status code
-            200,
-            // Les en-têtes de réponse à ajouter (aucune)
+            Response::HTTP_OK,
             [],
-            // Les groupes à utiliser par le Serializer
             ['groups' => 'get_bakeries_list']
         );
     }
@@ -39,7 +34,7 @@ class BakeryController extends AbstractController
      */
     public function bakeryById(Bakery $bakery = null) :Response
     {
-        // 404
+        // if the id doesn't correspond to any bakery
         if ($bakery === null) {
             return $this->json(['error' => 'Boulangerie non trouvé.'], Response::HTTP_NOT_FOUND);
         }

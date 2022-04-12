@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Bakery{% endblock %}
+
+{% block body %}
+    <h1 class="text-uppercase">Create new Bakery</h1>
+
+     <a class="btn btn-outline-light text-uppercase" href="{{ path('app_backoffice_bakery_index') }}">back to list</a>
+
+    {{ include('backoffice/bakery/_form.html.twig') }}
+
+{% endblock %}
