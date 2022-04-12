@@ -36,6 +36,9 @@ class CategoryController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $categoryRepository->add($category);
+
+            $this->addFlash('success', 'catégorie ajouté(e).');
+
             return $this->redirectToRoute('app_backoffice_category_index', [], Response::HTTP_SEE_OTHER);
         }
 
