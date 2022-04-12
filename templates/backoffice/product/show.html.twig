@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product{% endblock %}
+
+{% block body %}
+    <h1 class="text-uppercase">Product</h1>
+
+    {{ include('backoffice/product/_delete_form.html.twig') }}
+
+    <a class="btn btn-outline-light text-uppercase mb-2" href="{{ path('app_backoffice_product_index') }}">back to list</a>
+
+    <a class="btn btn-outline-light text-uppercase mb-2" href="{{ path('app_backoffice_product_edit', {'id': product.id}) }}">edit</a>
+
+    <table class="table table-dark table-striped">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ product.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ product.name }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ product.price }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ product.description }}</td>
+            </tr>
+            <tr>
+                <th>Picture</th>
+                <td><img class="product_image" src="{{ product.picture }}"</td>
+            </tr>
+            <tr>
+                <th>Boulangerie</th>
+                <td>{{ product.bakery }} </td>
+            </tr>
+            <tr>
+                <th>Catégorie</th>
+                <td>{{ product.category }}</td>
+            </tr>
+            
+            <!-- TODO intégrer les tags associés au produit-->
+            <tr>
+                <th>Tags</th>
+                <td></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+{% endblock %}
