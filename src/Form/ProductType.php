@@ -7,6 +7,7 @@ use App\Entity\Category;
 use App\Entity\Order;
 use App\Entity\Product;
 use App\Entity\Tag;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -38,10 +39,18 @@ class ProductType extends AbstractType
             ->add('bakery', EntityType::class, [
                 'class' => Bakery::class,
                 'label' => 'Nom de la boulangerie',
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('b')
+                        ->orderBy('b.name', 'ASC');
+                },
             ])
 
             ->add('category', EntityType::class, [
-                'class' => Category::class
+                'class' => Category::class,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('c')
+                        ->orderBy('c.name', 'ASC');
+                },
             ])
 
             ->add('tag', EntityType::class, [

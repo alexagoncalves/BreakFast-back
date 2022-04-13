@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\User;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -22,8 +23,9 @@ class UserType extends AbstractType
         $builder
 
             ->add('name', TextType::class, [
-                'label' => 'Nom d\'utilisateur'
+                'label' => 'Nom d\'utilisateur',
             ])
+
             ->add('email', EmailType::class)
 
             ->add('password', PasswordType::class, [
