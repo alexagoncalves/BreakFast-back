@@ -35,30 +35,26 @@ class UserType extends AbstractType
                     new Regex(
                         "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/",
                         "Le mot de passe doit contenir au minimum 8 caractères, une majuscule, un chiffre et un caractère spécial"
-                    )]
+                    )
+                ]
             ])
 
-            ->add('address', TextType::class, [
-                'label' => 'Adresse postale'
+            ->add('address', ChoiceType::class, [
+                'label' => 'Adresse postale',
             ])
 
             ->add('zip_code', TextType::class, [
                 'label' => 'Code postale'
             ])
 
-            ->add('roles', CollectionType::class, [
-                'label' => 'Type de rôle',
-                'entry_type'   => ChoiceType::class,
-                'entry_options'  => [
-                    'label' => false,
-                    'choices' => [
-                        'Administrateur' => 'ROLE_ADMIN',
-                        'Partenaire' => 'ROLE_PARTNER',
-                        'Utilisateur connecté' => 'ROLE_USER'
-                    ],
-                    'multiple' => false,
-                    'expanded' => true,
-                ],
+            ->add('roles', ChoiceType::class, [
+                'multiple' => true,
+                'expanded' => true,
+                'choices'  => [
+                    'Administrateur' => 'ROLE_ADMIN',
+                    'Partenaire' => 'ROLE_PARTNER',
+                    'Utilisateur' => 'ROLE_USER'
+                ]
             ]);
     }
 
