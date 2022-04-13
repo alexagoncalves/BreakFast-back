@@ -206,4 +206,7 @@ class Product
 
         return $this;
     }
+    public function getCustom() {
+        return $this->bakery->getName() . ' ' . $this->name;
+    }
 }

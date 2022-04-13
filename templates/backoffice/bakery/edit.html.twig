@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Bakery{% endblock %}
+{% block title %}Modifier Boulangerie{% endblock %}
 
 {% block body %}
-    <h1 class="text-uppercase">Edit Bakery</h1>
+    <h1 class="text-uppercase">Modifier Boulangerie {{ bakery.name }} - id nº {{ bakery.id }}</h1>
 
-    <a class="btn btn-outline-light text-uppercase mb-2" href="{{ path('app_backoffice_bakery_index') }}">back to list</a>
+    <a class="btn btn-outline-light text-uppercase mb-2" href="{{ path('app_backoffice_bakery_index') }}">retour à la liste</a>
 
     {{ include('backoffice/bakery/_delete_form.html.twig') }}
     

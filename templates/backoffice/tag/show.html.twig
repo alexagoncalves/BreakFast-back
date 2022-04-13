@@ -1,26 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Tag{% endblock %}
+{% block title %}Tag nº {{ tag.id }}{% endblock %}
 
 {% block body %}
-    <h1>Tag</h1>
+    <div class="container">
+        <h1 class="text-uppercase">Tag nº {{ tag.id }}</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ tag.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ tag.name }}</td>
-            </tr>
-        </tbody>
-    </table>
+        {{ include('backoffice/tag/_delete_form.html.twig') }}
 
-    <a href="{{ path('app_backoffice_tag_index') }}">back to list</a>
+        <a class="btn btn-outline-light text-uppercase mb-2" href="{{ path('app_backoffice_tag_index') }}">retour à la liste</a>
 
-    <a href="{{ path('app_backoffice_tag_edit', {'id': tag.id}) }}">edit</a>
+        <a class="btn btn-outline-light text-uppercase mb-2" href="{{ path('app_backoffice_tag_edit', {'id': tag.id}) }}">mettre à jour</a>
 
-    {{ include('backoffice/tag/_delete_form.html.twig') }}
+        <table class="table table-dark table-striped">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ tag.id }}</td>
+                </tr>
+                <tr>
+                    <th>Nom de Tag</th>
+                    <td>{{ tag.name }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
 {% endblock %}

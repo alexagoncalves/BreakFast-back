@@ -23,17 +23,28 @@ class BakeryType extends AbstractType
             ->add('address', TextType::class)
             ->add('profile_img', UrlType::class)
             ->add('phone_number', NumberType::class)
+            ->add('rating', ChoiceType::class, [
+                'choices'  => [
+                    '1' => '1',
+                    '2' => '2',
+                    '3' => '3',
+                    '4' => '4',
+                    '5' => '5'
+                ],
+                'multiple' => false,
+                'expanded' => false
+            ])
             ->add('status', ChoiceType::class, [
                 'choices'  => [
                     'Activé' => '1',
                     'Desactivé' => '0'
                 ],
-                'expanded' => true])
+                'expanded' => true
+                ])
             ->add('delivery_fees', NumberType::class)
             ->add('delivery_time', NumberType::class)
             ->add('user', EntityType::class, [
                 'class' => User::class,
-                'attr' => ['class' => 'form-control'],
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('u')
                         ->orderBy('u.name', 'ASC');

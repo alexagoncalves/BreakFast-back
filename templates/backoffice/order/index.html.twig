@@ -1,37 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Order index{% endblock %}
+{% block title %}Liste des Commandes{% endblock %}
 
 {% block body %}
-    <h1>Order index</h1>
+    <h1 class="text-uppercase">Liste des Commandes</h1>
 
-    <table class="table">
+    <a class="btn btn-outline-light text-uppercase" href="{{ path('app_backoffice_order_new') }}">Créer Commande</a>
+
+    <table class="table table-dark table-striped">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Total_price</th>
-                <th>Order_date</th>
-                <th>actions</th>
+                <th class="text-center">Id</th>
+                <th class="text-center">Prix Total</th>
+                <th class="text-center">Date de Commande</th>
+                <th class="text-center">Utilisateur</th>
+                <th class="text-center"></th>
             </tr>
         </thead>
         <tbody>
         {% for order in orders %}
             <tr>
-                <td>{{ order.id }}</td>
-                <td>{{ order.totalPrice }}</td>
-                <td>{{ order.orderDate ? order.orderDate|date('Y-m-d') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_backoffice_order_show', {'id': order.id}) }}">show</a>
-                    <a href="{{ path('app_backoffice_order_edit', {'id': order.id}) }}">edit</a>
+                <td class="align-middle text-center">{{ order.id }}</td>
+                <td class="align-middle text-center">{{ order.totalPrice }}</td>
+                <td class="align-middle text-center">{{ order.orderDate ? order.orderDate|date('Y-m-d') : '' }}</td>
+                <td class="align-middle text-center">{{ order.user.name }}</td>
+                <td class="align-middle text-center">
+                    <a class="btn btn-outline-light text-uppercase" href="{{ path('app_backoffice_order_show', {'id': order.id}) }}">détail</a>
+                    <a class="btn btn-outline-light text-uppercase" href="{{ path('app_backoffice_order_edit', {'id': order.id}) }}">mettre à jour</a>
+                </td>
+                <td class="align-middle text-center">
+                    {{ include('backoffice/order/_delete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Aucune Commande trouvé.</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_backoffice_order_new') }}">Create new</a>
 {% endblock %}

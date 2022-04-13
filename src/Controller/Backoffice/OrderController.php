@@ -3,6 +3,7 @@
 namespace App\Controller\Backoffice;
 
 use App\Entity\Order;
+use App\Entity\Product;
 use App\Form\OrderType;
 use App\Repository\OrderRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -48,7 +49,7 @@ class OrderController extends AbstractController
     /**
      * @Route("/{id}", name="app_backoffice_order_show", methods={"GET"})
      */
-    public function show(Order $order): Response
+    public function show(Order $order, Product $product): Response
     {
         return $this->render('backoffice/order/show.html.twig', [
             'order' => $order,

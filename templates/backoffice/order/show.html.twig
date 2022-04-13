@@ -1,30 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Order{% endblock %}
+{% block title %}Commande nº {{ order.id }}{% endblock %}
 
 {% block body %}
-    <h1>Order</h1>
+    <div class="container">
+        <h1>Détail Commande nº {{ order.id }}</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ order.id }}</td>
-            </tr>
-            <tr>
-                <th>Total_price</th>
-                <td>{{ order.totalPrice }}</td>
-            </tr>
-            <tr>
-                <th>Order_date</th>
-                <td>{{ order.orderDate ? order.orderDate|date('Y-m-d') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+        {{ include('backoffice/order/_delete_form.html.twig') }}
+        
+        <a class="btn btn-outline-light text-uppercase mb-2" href="{{ path('app_backoffice_order_index') }}">retour à la liste</a>
 
-    <a href="{{ path('app_backoffice_order_index') }}">back to list</a>
+        <a class="btn btn-outline-light text-uppercase mb-2" href="{{ path('app_backoffice_order_edit', {'id': order.id}) }}">mettre à jour</a>
 
-    <a href="{{ path('app_backoffice_order_edit', {'id': order.id}) }}">edit</a>
-
-    {{ include('backoffice/order/_delete_form.html.twig') }}
+        <table class="table table-dark table-striped">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ order.id }}</td>
+                </tr>
+                <tr>
+                    <th>Prix Total</th>
+                    <td>{{ order.totalPrice }}</td>
+                </tr>
+                <tr>
+                    <th>Date de Commande</th>
+                    <td>{{ order.orderDate ? order.orderDate|date('Y-m-d') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Utilisateur</th>
+                    <td>{{ order.user.name }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

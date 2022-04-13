@@ -1,56 +1,60 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bakery{% endblock %}
+{% block title %}Boulangerie nº {{ bakery.id }}{% endblock %}
 
 {% block body %}
-    <h1 class="text-uppercase">Bakery</h1>
+    <div class="container">
+        <h1 class="text-uppercase">Détail {{ bakery.name }} - id nº {{bakery.id}}</h1>
 
-    {{ include('backoffice/bakery/_delete_form.html.twig') }}
+        {{ include('backoffice/bakery/_delete_form.html.twig') }}
 
-    <a class="btn btn-outline-light text-uppercase mb-2" href="{{ path('app_backoffice_bakery_index') }}">back to list</a>
+        <a class="btn btn-outline-light text-uppercase mb-2" href="{{ path('app_backoffice_bakery_index') }}">retour à la liste</a>
 
-    <a class="btn btn-outline-light text-uppercase mb-2" href="{{ path('app_backoffice_bakery_edit', {'id': bakery.id}) }}">edit</a>
+        <a class="btn btn-outline-light text-uppercase mb-2" href="{{ path('app_backoffice_bakery_edit', {'id': bakery.id}) }}">mettre à jour</a>
 
-
-    <table class="table table-dark table-striped">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td class="align-middle">{{ bakery.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ bakery.name }}</td>
-            </tr>
-            <tr>
-                <th>Address</th>
-                <td>{{ bakery.address }}</td>
-            </tr>
-            <tr>
-                <th>Profile_img</th>
-                <td>{{ bakery.profileImg }}</td>
-            </tr>
-            <tr>
-                <th>Phone_number</th>
-                <td>{{ bakery.phoneNumber }}</td>
-            </tr>
-            <tr>
-                <th>Rating</th>
-                <td>{{ bakery.rating }}</td>
-            </tr>
-            <tr>
-                <th>Status</th>
-                <td>{{ bakery.status }}</td>
-            </tr>
-            <tr>
-                <th>Delivery_fees</th>
-                <td>{{ bakery.deliveryFees }}</td>
-            </tr>
-            <tr>
-                <th>Delivery_time</th>
-                <td>{{ bakery.deliveryTime }}</td>
-            </tr>
-        </tbody>
-    </table>
-    
+        <table class="table table-dark table-striped">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ bakery.id }}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ bakery.name }}</td>
+                </tr>
+                <tr>
+                    <th>Utilisateur Associé</th>
+                    <td>{{ bakery.user.name }}</td>
+                </tr>
+                <tr>
+                    <th>Ville</th>
+                    <td>{{ bakery.address }}</td>
+                </tr>
+                <tr>
+                    <th>Image de Profil</th>
+                    <td><img class="backoffice_images" src="{{ bakery.profileImg }}"</td>
+                </tr>
+                <tr>
+                    <th>Contact</th>
+                    <td>{{ bakery.phoneNumber }}</td>
+                </tr>
+                <tr>
+                    <th>Rating</th>
+                    <td>{{ bakery.rating }}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>{{ bakery.status }}</td>
+                </tr>
+                <tr>
+                    <th>Frais de Livraison</th>
+                    <td>{{ bakery.deliveryFees }}</td>
+                </tr>
+                <tr>
+                    <th>Délai de Livraison</th>
+                    <td>{{ bakery.deliveryTime }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
