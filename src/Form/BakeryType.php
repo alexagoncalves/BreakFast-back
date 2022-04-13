@@ -35,8 +35,8 @@ class BakeryType extends AbstractType
                 'class' => User::class,
                 'attr' => ['class' => 'form-control'],
                 'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('g')
-                        ->orderBy('g.name', 'ASC');
+                    return $er->createQueryBuilder('u')
+                        ->orderBy('u.name', 'ASC');
                 },
                 'choice_label' => 'name',
                 'multiple' => false,

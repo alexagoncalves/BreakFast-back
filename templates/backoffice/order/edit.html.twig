@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Order{% endblock %}
+
+{% block body %}
+    <h1>Edit Order</h1>
+
+    {{ include('backoffice/order/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_backoffice_order_index') }}">back to list</a>
+
+    {{ include('backoffice/order/_delete_form.html.twig') }}
+{% endblock %}

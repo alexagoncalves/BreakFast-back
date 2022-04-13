@@ -1,0 +1,6 @@
+{{ form_start(form) }}
+    <div class="container">
+        {{ form_widget(form, {'attr': {'class': 'text-uppercase'}}) }}
+        <button class="btn btn-outline-light text-uppercase mt-2">{{ button_label|default('Save') }}</button>
+    </div>
+{{ form_end(form) }}
