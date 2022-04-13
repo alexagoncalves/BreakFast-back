@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau produit
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-uppercase">Creation d'un nouveau produit</h1>
+
+	<a class="btn btn-outline-light text-uppercase" href="{{ path('app_backoffice_product_index') }}">Retour à la liste</a>
+
+	{{ include('backoffice/product/_form.html.twig') }}
+
+{% endblock %}

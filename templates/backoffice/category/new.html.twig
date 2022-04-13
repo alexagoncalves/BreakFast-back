@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Categorie{% endblock %}
+
+{% block body %}
+    <h1 class="text-uppercase">Création d'une nouvelle catégorie</h1>
+	
+    <a class="btn btn-outline-light text-uppercase" href="{{ path('app_backoffice_category_index') }}">Retour à la liste</a>
+
+	{{ include('backoffice/category/_form.html.twig') }}
+{% endblock %}

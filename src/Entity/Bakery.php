@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -28,6 +29,7 @@ class Bakery
      * @Groups({"api_products_list"})
      * @Groups({"get_bakeries_list", "get_bakery_by_id"})
      * @Groups({"api_user"})
+     * @Assert\NotBlank
      * 
      */
     private $name;
@@ -36,6 +38,9 @@ class Bakery
      * @ORM\Column(type="string", length=255)
      * @Groups({"api_products_list"})
      * @Groups({"get_bakeries_list", "get_bakery_by_id"})
+     * @Assert\NotBlank
+     * @Assert\Length(min = 2, minMessage = "Il faut au minimum {{ limit }} caractères")
+     * 
      */
     private $address;
 
@@ -43,6 +48,9 @@ class Bakery
      * @ORM\Column(type="string", length=255)
      * @Groups({"api_products_list"})
      * @Groups({"get_bakeries_list", "get_bakery_by_id"})
+     * @Assert\NotBlank
+     * @Assert\Url(message="L'url '{{ value }}' n'est pas une url valide")
+     * 
      */
     private $profile_img;
 
@@ -50,6 +58,8 @@ class Bakery
      * @ORM\Column(type="integer")
      * @Groups({"api_products_list"})
      * @Groups({"get_bakeries_list", "get_bakery_by_id"})
+     * @Assert\NotBlank
+     * @Assert\PositiveOrZero
      */
     private $phone_number;
 
@@ -57,6 +67,8 @@ class Bakery
      * @ORM\Column(type="integer", nullable=true)
      * @Groups({"api_products_list"})
      * @Groups({"get_bakeries_list", "get_bakery_by_id"})
+     * @Assert\PositiveOrZero
+     * @Assert\NotBlank
      */
     private $rating;
 
@@ -64,6 +76,9 @@ class Bakery
      * @ORM\Column(type="integer")
      * @Groups({"api_products_list"})
      * @Groups({"get_bakeries_list", "get_bakery_by_id"})
+     * @Assert\NotBlank
+     * @Assert\PositiveOrZero
+     *  
      */
     private $status;
 
@@ -71,6 +86,8 @@ class Bakery
      * @ORM\Column(type="float")
      * @Groups({"api_products_list"})
      * @Groups({"get_bakeries_list", "get_bakery_by_id"})
+     * @Assert\NotBlank
+     * @Assert\PositiveOrZero
      */
     private $delivery_fees;
 
@@ -78,12 +95,15 @@ class Bakery
      * @ORM\Column(type="integer")
      * @Groups({"api_products_list"})
      * @Groups({"get_bakeries_list", "get_bakery_by_id"})
+     * @Assert\NotBlank
+     * @Assert\Time
      */
     private $delivery_time;
 
     /**
      * @ORM\OneToMany(targetEntity=Product::class, mappedBy="bakery")
      * @Groups({"get_bakeries_list", "get_bakery_by_id"})
+     * @Assert\NotBlank
      */
     private $product;
 
@@ -91,6 +111,7 @@ class Bakery
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="bakeries")
      * @ORM\JoinColumn(nullable=false)
      * @Groups({"get_bakeries_list", "get_bakery_by_id"})
+     * @Assert\NotBlank
      */
     private $user;
 
@@ -240,5 +261,10 @@ class Bakery
         $this->user = $user;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

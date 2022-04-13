@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -27,24 +28,33 @@ class Product
      * @ORM\Column(type="string", length=255)
      * @Groups({"api_products_list"})
      * @Groups({"get_bakeries_list", "get_bakery_by_id"})
+     * @Assert\NotBlank
+     * 
      */
     private $name;
 
     /**
      * @ORM\Column(type="float")
      * @Groups({"api_products_list"})
+     * @Assert\NotBlank
+     * @Assert\PositiveOrZero 
      */
     private $price;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"api_products_list"})
+     * @Assert\NotBlank
+     * @Assert\Length(max = 100, maxMessage = "Il faut au maximum {{ limit }} caractères")
+     * 
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"api_products_list"})
+     * @Assert\NotBlank
+     * @Assert\Url(message="L'url '{{ value }}' n'est pas une url valide")
      */
     private $picture;
 
@@ -52,12 +62,16 @@ class Product
      * @ORM\ManyToOne(targetEntity=Bakery::class, inversedBy="product")
      * @ORM\JoinColumn(nullable=false)
      * @Groups({"api_products_list"})
+     * @Assert\NotBlank
+     * 
      */
     private $bakery;
 
     /**
      * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="products")
      * @Groups({"api_products_list"})
+     * @Assert\NotBlank
+     * 
      */
     private $tag;
 
@@ -65,6 +79,8 @@ class Product
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")
      * @ORM\JoinColumn(nullable=false)
      * @Groups({"api_products_list"})
+     * @Assert\NotBlank
+     * 
      */
     private $category;
 

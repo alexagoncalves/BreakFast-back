@@ -9,6 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -26,6 +28,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      * @Groups ("api_user")
+     * @Assert\NotBlank
+     * @Assert\Email(message = "The email '{{ value }}' is not a valid email."
+     * )
      */
     private $email;
 
@@ -38,6 +43,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\NotBlank
+     * )
      */
     private $password;
 
@@ -45,6 +52,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", length=255)
      * @Groups({"get_bakeries_list", "get_bakery_by_id"})
      * @Groups ("api_user")
+     * @Assert\NotBlank
+     * 
      */
     private $name;
 
@@ -57,12 +66,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="integer")
      * @Groups ("api_user")
+     * @Assert\NotBlank
+     * @Assert\PositiveOrZero
      */
     private $zip_code;
 
     /**
      * @ORM\OneToMany(targetEntity=Bakery::class, mappedBy="user")
      * @Groups ("api_user")
+     * @Assert\NotBlank
      */
     private $bakeries;
 

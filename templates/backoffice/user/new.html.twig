@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvel utilisateur{% endblock %}
+
+{% block body %}
+    <h1 class="text-uppercase">Création d'un nouvel utilisateur</h1>
+
+	<a class="btn btn-outline-light text-uppercase" href="{{ path('app_backoffice_user_index') }}">Retour à la liste</a>
+
+	{{ include('backoffice/user/_form.html.twig') }}
+
+{% endblock %}
