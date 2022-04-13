@@ -36,6 +36,9 @@ class ProductController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $productRepository->add($product);
+
+            $this->addFlash('success', 'produit ajouté.');
+
             return $this->redirectToRoute('app_backoffice_product_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -65,6 +68,9 @@ class ProductController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $productRepository->add($product);
+
+            $this->addFlash('success', 'produit modifié.');
+
             return $this->redirectToRoute('app_backoffice_product_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -81,6 +87,8 @@ class ProductController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
             $productRepository->remove($product);
+
+            $this->addFlash('success', 'produit supprimé.');
         }
 
         return $this->redirectToRoute('app_backoffice_product_index', [], Response::HTTP_SEE_OTHER);

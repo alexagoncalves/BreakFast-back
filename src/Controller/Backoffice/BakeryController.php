@@ -37,6 +37,9 @@ class BakeryController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $bakeryRepository->add($bakery);
+
+            $this->addFlash('success', 'boulangerie ajoutée.');
+
             return $this->redirectToRoute('app_backoffice_bakery_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -66,6 +69,9 @@ class BakeryController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $bakeryRepository->add($bakery);
+
+            $this->addFlash('success', 'boulangerie modifiée.');
+
             return $this->redirectToRoute('app_backoffice_bakery_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -83,6 +89,8 @@ class BakeryController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$bakery->getId(), $request->request->get('_token'))) {
             $bakeryRepository->remove($bakery);
         }
+
+        $this->addFlash('success', 'boulangerie supprimée.');
 
         return $this->redirectToRoute('app_backoffice_bakery_index', [], Response::HTTP_SEE_OTHER);
     }

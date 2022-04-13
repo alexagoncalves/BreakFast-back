@@ -42,6 +42,9 @@ class UserController extends AbstractController
             $user->setPassword($hashedPassword);
 
             $userRepository->add($user);
+
+            $this->addFlash('success', 'utilisateur ajouté.');
+
             return $this->redirectToRoute('app_backoffice_user_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -81,6 +84,9 @@ class UserController extends AbstractController
             }
 
             $userRepository->add($user);
+
+            $this->addFlash('success', 'utilisateur modifié.');
+
             return $this->redirectToRoute('app_backoffice_user_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -98,6 +104,8 @@ class UserController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
             $userRepository->remove($user);
         }
+
+        $this->addFlash('success', 'utilisateur supprimé.');
 
         return $this->redirectToRoute('app_backoffice_user_index', [], Response::HTTP_SEE_OTHER);
     }

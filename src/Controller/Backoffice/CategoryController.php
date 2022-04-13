@@ -37,7 +37,7 @@ class CategoryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $categoryRepository->add($category);
 
-            $this->addFlash('success', 'catégorie ajouté(e).');
+            $this->addFlash('success', 'catégorie ajoutée.');
 
             return $this->redirectToRoute('app_backoffice_category_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -68,6 +68,9 @@ class CategoryController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $categoryRepository->add($category);
+
+            $this->addFlash('success', 'catégorie modifiée.');
+
             return $this->redirectToRoute('app_backoffice_category_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -85,6 +88,8 @@ class CategoryController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
             $categoryRepository->remove($category);
         }
+
+        $this->addFlash('success', $category->getName() . ', supprimé.');
 
         return $this->redirectToRoute('app_backoffice_category_index', [], Response::HTTP_SEE_OTHER);
     }
