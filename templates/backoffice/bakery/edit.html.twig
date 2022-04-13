@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modifier Boulangerie{% endblock %}
+{% block title %}Mise à jour Boulangerie{% endblock %}
 
 {% block body %}
-    <h1 class="text-uppercase">Modifier Boulangerie {{ bakery.name }} - id nº {{ bakery.id }}</h1>
+    <h1 class="text-uppercase">Mise à jour Boulangerie {{ bakery.name }} - id nº {{ bakery.id }}</h1>
 
-    <a class="btn btn-outline-light text-uppercase mb-2" href="{{ path('app_backoffice_bakery_index') }}">retour à la liste</a>
+    <a class="btn btn-outline-light text-uppercase mb-2" href="{{ path('app_backoffice_bakery_index') }}">Retour à la liste</a>
 
     {{ include('backoffice/bakery/_delete_form.html.twig') }}
     
-    {{ include('backoffice/bakery/_form.html.twig', {'button_label': 'Submit'}) }}
+    {{ include('backoffice/bakery/_form.html.twig', {'button_label': 'Valider'}) }}
 
 {% endblock %}

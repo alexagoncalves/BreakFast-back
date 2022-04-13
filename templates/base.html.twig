@@ -35,16 +35,19 @@
                                 <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_bakery_' %} active{% endif %}" href="{{ path('app_backoffice_bakery_index') }}">Boulangeries</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_user_' %} active{% endif %}" href="{{ path('app_backoffice_bakery_index') }}">Utilisateurs</a>
+                                <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_user_' %} active{% endif %}" href="{{ path('app_backoffice_user_index') }}">Utilisateurs</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_product_' %} active{% endif %}" href="{{ path('app_backoffice_bakery_index') }}">Produits</a>
+                                <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_product_' %} active{% endif %}" href="{{ path('app_backoffice_product_index') }}">Produits</a>
                             </li>
                              <li class="nav-item">
                                 <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_tag_' %} active{% endif %}" href="{{ path('app_backoffice_tag_index') }}">Tags</a>
                             </li>
-                             <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_order_' %} active{% endif %}" href="{{ path('app_backoffice_order_index') }}">Commandes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_category_' %} active{% endif %}" href="{{ path('app_backoffice_category_index') }}">Categories</a>
                             </li>
                         </ul>
                         

@@ -4,13 +4,13 @@
 
 {% block body %}
     <div class="container">
-        <h1 class="text-uppercase">Détail {{ bakery.name }} - id nº {{bakery.id}}</h1>
+        <h1 class="text-uppercase">Détails {{ bakery.name }} - id nº {{bakery.id}}</h1>
 
         {{ include('backoffice/bakery/_delete_form.html.twig') }}
 
-        <a class="btn btn-outline-light text-uppercase mb-2" href="{{ path('app_backoffice_bakery_index') }}">retour à la liste</a>
+        <a class="btn btn-outline-light text-uppercase mb-2" href="{{ path('app_backoffice_bakery_index') }}">Retour à la liste</a>
 
-        <a class="btn btn-outline-light text-uppercase mb-2" href="{{ path('app_backoffice_bakery_edit', {'id': bakery.id}) }}">mettre à jour</a>
+        <a class="btn btn-outline-light text-uppercase mb-2" href="{{ path('app_backoffice_bakery_edit', {'id': bakery.id}) }}">Mettre à jour</a>
 
         <table class="table table-dark table-striped">
             <tbody>

@@ -49,7 +49,7 @@ class OrderController extends AbstractController
     /**
      * @Route("/{id}", name="app_backoffice_order_show", methods={"GET"})
      */
-    public function show(Order $order, Product $product): Response
+    public function show(Order $order): Response
     {
         return $this->render('backoffice/order/show.html.twig', [
             'order' => $order,

@@ -1,14 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mettre à jour un produit{% endblock %}
+{% block title %}Mise à jour Produit{% endblock %}
 
 {% block body %}
-	<h1 class="text-uppercase">Mettre à jour un produit</h1>
+	<h1 class="text-uppercase">Mise à jour Produit</h1>
 
 	<a class="btn btn-outline-light text-uppercase mb-2" href="{{ path('app_backoffice_product_index') }}">Retour à la liste</a>
 
+	{{ include('backoffice/product/_delete_form.html.twig') }}
+
 	{{ include('backoffice/product/_form.html.twig', {'button_label': 'Valider'}) }}
 
-	{{ include('backoffice/product/_delete_form.html.twig') }}
 
 {% endblock %}

@@ -30,7 +30,6 @@ class Order
 
     /**
      * @ORM\Column(type="date")
-     * @Assert\Date
      * @Assert\NotBlank
      */
     private $order_date;

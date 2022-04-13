@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Order{% endblock %}
+{% block title %}Nouvelle Commande{% endblock %}
 
 {% block body %}
-    <h1>Create new Order</h1>
+    <h1 class="text-uppercase">Créer une Commande</h1>
+
+    <a class="btn btn-outline-light text-uppercase" href="{{ path('app_backoffice_order_index') }}">Retour à la liste</a>
 
     {{ include('backoffice/order/_form.html.twig') }}
 
-    <a href="{{ path('app_backoffice_order_index') }}">retour à la liste</a>
 {% endblock %}
