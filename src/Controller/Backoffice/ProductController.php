@@ -3,8 +3,10 @@
 namespace App\Controller\Backoffice;
 
 use App\Entity\Product;
+use App\Entity\Tag;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
+use App\Repository\TagRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

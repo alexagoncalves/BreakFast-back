@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Product{% endblock %}
+{% block title %}Détails d'un produit{% endblock %}
 
 {% block body %}
-    <h1 class="text-uppercase">Product</h1>
+    <h1 class="text-uppercase">Détails d'un produit</h1>
 
     {{ include('backoffice/product/_delete_form.html.twig') }}
 
-    <a class="btn btn-outline-light text-uppercase mb-2" href="{{ path('app_backoffice_product_index') }}">back to list</a>
+    <a class="btn btn-outline-light text-uppercase mb-2" href="{{ path('app_backoffice_product_index') }}">Retour à la liste</a>
 
-    <a class="btn btn-outline-light text-uppercase mb-2" href="{{ path('app_backoffice_product_edit', {'id': product.id}) }}">edit</a>
+    <a class="btn btn-outline-light text-uppercase mb-2" href="{{ path('app_backoffice_product_edit', {'id': product.id}) }}">Mettre à jour</a>
 
     <table class="table table-dark table-striped">
         <tbody>
@@ -18,11 +18,11 @@
                 <td>{{ product.id }}</td>
             </tr>
             <tr>
-                <th>Name</th>
+                <th>Nom</th>
                 <td>{{ product.name }}</td>
             </tr>
             <tr>
-                <th>Price</th>
+                <th>Prix</th>
                 <td>{{ product.price }}</td>
             </tr>
             <tr>
@@ -30,7 +30,7 @@
                 <td>{{ product.description }}</td>
             </tr>
             <tr>
-                <th>Picture</th>
+                <th>Image</th>
                 <td><img class="product_image" src="{{ product.picture }}"</td>
             </tr>
             <tr>
