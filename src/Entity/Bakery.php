@@ -96,7 +96,6 @@ class Bakery
      * @Groups({"api_products_list"})
      * @Groups({"get_bakeries_list", "get_bakery_by_id"})
      * @Assert\NotBlank
-     * @Assert\Time
      */
     private $delivery_time;
 
