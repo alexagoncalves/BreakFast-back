@@ -33,13 +33,13 @@ security:
             jwt: ~
 
         main:
+            lazy: true
             custom_authenticator: App\Security\LoginBackofficeAuthenticator
             logout:
                 path: app_backoffice_logout
                 # where to redirect after logout
                 target: app_backoffice_login
                 invalidate_session: true
-            lazy: true
             provider: app_user_provider
 
             # activate different ways to authenticate
