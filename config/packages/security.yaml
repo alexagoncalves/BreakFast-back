@@ -33,14 +33,21 @@ security:
             jwt: ~
 
         main:
-            custom_authenticator: App\Security\LoginBackofficeAuthenticator
+            lazy: true
+            provider: app_user_provider
+
+            form_login:
+                # name of the route created previously
+                login_path: app_backoffice_login # GET => affiche le form
+                check_path: app_backoffice_login # POST => traite le form
+
+            # custom_authenticator: App\Security\LoginBackofficeAuthenticator
             logout:
                 path: app_backoffice_logout
                 # where to redirect after logout
                 target: app_backoffice_login
-                invalidate_session: true
-            lazy: true
-            provider: app_user_provider
+                # invalidate_session: true
+            
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
