@@ -13,10 +13,10 @@
                 <th class="text-center">Id</th>
                 <th class="text-center">Nom</th>
                 <th class="text-center">Ville</th>
-                <th class="text-center">Image de Profil</th>
-                <th class="text-center">Téléphone</th>
-                <th class="text-center">Rating</th>
-                <th class="text-center">Status</th>
+                <th class="text-center">Numéro de téléphone</th>
+                <th class="text-center">Photo de la boutique</th>
+                <th class="text-center">Note</th>
+                <th class="text-center">Statut</th>
                 <th class="text-center">Frais de Livraison</th>
                 <th class="text-center">Délai de Livraison</th>
                 <th class="text-center">Actions</th>
@@ -28,8 +28,8 @@
                 <td class="align-middle text-center">{{ bakery.id }}</td>
                 <td class="align-middle text-center">{{ bakery.name }}</td>
                 <td class="align-middle text-center">{{ bakery.address }}</td>
-                <td class="align-middle text-center"><img class="backoffice_images" src="{{ bakery.profileImg }}"</td>
                 <td class="align-middle text-center">{{ bakery.phoneNumber }}</td>
+                <td class="align-middle text-center"><img class="backoffice_images" src="{{ bakery.profileImg }}"</td>
                 <td class="align-middle text-center">{{ bakery.rating }}</td>
                 <td class="align-middle text-center">{{ bakery.status }}</td>
                 <td class="align-middle text-center">{{ bakery.deliveryFees }}</td>
