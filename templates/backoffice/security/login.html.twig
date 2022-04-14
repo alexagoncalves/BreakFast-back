@@ -7,9 +7,16 @@
 
 {% block body %}
 <div class="container">
-    <form method="post">
+        <form action="{{ path('app_backoffice_login') }}" method="post">
+
                
             <h1 class="h3 mb-3 font-weight-normal text-uppercase">Please sign in</h1>
+
+            {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{ error.messageKey|trans(error.messageData, 'security') }}
+            </div>
+            {% endif %}
         
             <label for="inputEmail">Email</label>
             <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
