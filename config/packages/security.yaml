@@ -34,20 +34,13 @@ security:
 
         main:
             lazy: true
-            provider: app_user_provider
-
-            # form_login:
-                # name of the route created previously
-                # login_path: app_backoffice_login # GET => affiche le form
-                # check_path: app_backoffice_login # POST => traite le form
-
             custom_authenticator: App\Security\LoginBackofficeAuthenticator
             logout:
                 path: app_backoffice_logout
                 # where to redirect after logout
                 target: app_backoffice_login
                 invalidate_session: true
-            
+            provider: app_user_provider
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -60,7 +53,8 @@ security:
     access_control:
         - { path: ^/api/login, roles: PUBLIC_ACCESS }
         - { path: ^/backoffice/login, roles: PUBLIC_ACCESS }
-        - { path: ^/backoffice/, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/backoffice/logout, roles: PUBLIC_ACCESS }
+        - { path: ^/backoffice/, roles: PUBLIC_ACCESS }
         #- { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
     
     role_hierarchy:

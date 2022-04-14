@@ -28,6 +28,11 @@ class LoginBackofficeAuthenticator extends AbstractLoginFormAuthenticator
         $this->urlGenerator = $urlGenerator;
     }
 
+    public function supports(Request $request): bool
+    {
+        return $request->isMethod('POST') && $this->getLoginUrl($request) === $request->getRequestUri();
+    }
+
     public function authenticate(Request $request): Passport
     {
         $email = $request->request->get('email', '');
@@ -49,9 +54,13 @@ class LoginBackofficeAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        // For example:
-        return new RedirectResponse($this->urlGenerator->generate('app_backoffice_bakery_index'));
-        //throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+        if ($request->getSession()->get('app_backoffice_login'))
+        {
+            return new RedirectResponse($request->getSession()->get('app_backoffice_login'));
+        }
+        return new RedirectResponse($this->urlGenerator->generate('app_backoffice_main'));
+        // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+      
     }
 
     protected function getLoginUrl(Request $request): string
