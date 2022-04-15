@@ -35,19 +35,19 @@
                                 <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_bakery_' %} active{% endif %}" href="{{ path('app_backoffice_bakery_read') }}">Boulangeries</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_user_' %} active{% endif %}" href="{{ path('app_backoffice_user_read') }}">Utilisateurs</a>
+                                <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_product_' %} active{% endif %}" href="{{ path('app_backoffice_product_read') }}">Produits</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_product_' %} active{% endif %}" href="{{ path('app_backoffice_product_read') }}">Produits</a>
+                                <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_category_' %} active{% endif %}" href="{{ path('app_backoffice_category_read') }}">Categories</a>
                             </li>
                              <li class="nav-item">
                                 <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_tag_' %} active{% endif %}" href="{{ path('app_backoffice_tag_read') }}">Tags</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_order_' %} active{% endif %}" href="{{ path('app_backoffice_order_read') }}">Commandes</a>
+                                <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_user_' %} active{% endif %}" href="{{ path('app_backoffice_user_read') }}">Utilisateurs</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_category_' %} active{% endif %}" href="{{ path('app_backoffice_category_read') }}">Categories</a>
+                                <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_order_' %} active{% endif %}" href="{{ path('app_backoffice_order_read') }}">Commandes</a>
                             </li>
                         </ul>
                         
