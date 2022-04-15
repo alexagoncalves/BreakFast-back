@@ -17,11 +17,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class OrderController extends AbstractController
 {
     /**
-     * @Route("/", name="app_backoffice_order_index", methods={"GET"})
+     * @Route("/", name="app_backoffice_order_read", methods={"GET"})
      */
-    public function index(OrderRepository $orderRepository): Response
+    public function read(OrderRepository $orderRepository): Response
     {
-        return $this->render('backoffice/order/index.html.twig', [
+        return $this->render('backoffice/order/read.html.twig', [
             'orders' => $orderRepository->findAll(),
         ]);
     }
@@ -37,7 +37,7 @@ class OrderController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $orderRepository->add($order);
-            return $this->redirectToRoute('app_backoffice_order_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_backoffice_order_read', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('backoffice/order/new.html.twig', [
@@ -66,7 +66,7 @@ class OrderController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $orderRepository->add($order);
-            return $this->redirectToRoute('app_backoffice_order_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_backoffice_order_read', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('backoffice/order/edit.html.twig', [
@@ -84,6 +84,6 @@ class OrderController extends AbstractController
             $orderRepository->remove($order);
         }
 
-        return $this->redirectToRoute('app_backoffice_order_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_backoffice_order_read', [], Response::HTTP_SEE_OTHER);
     }
 }

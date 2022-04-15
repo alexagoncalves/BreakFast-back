@@ -16,11 +16,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class TagController extends AbstractController
 {
     /**
-     * @Route("/", name="app_backoffice_tag_index", methods={"GET"})
+     * @Route("/", name="app_backoffice_tag_read", methods={"GET"})
      */
-    public function index(TagRepository $tagRepository): Response
+    public function read(TagRepository $tagRepository): Response
     {
-        return $this->render('backoffice/tag/index.html.twig', [
+        return $this->render('backoffice/tag/read.html.twig', [
             'tags' => $tagRepository->findAll(),
         ]);
     }
@@ -36,7 +36,7 @@ class TagController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $tagRepository->add($tag);
-            return $this->redirectToRoute('app_backoffice_tag_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_backoffice_tag_read', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('backoffice/tag/new.html.twig', [
@@ -65,7 +65,7 @@ class TagController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $tagRepository->add($tag);
-            return $this->redirectToRoute('app_backoffice_tag_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_backoffice_tag_read', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('backoffice/tag/edit.html.twig', [
@@ -83,6 +83,6 @@ class TagController extends AbstractController
             $tagRepository->remove($tag);
         }
 
-        return $this->redirectToRoute('app_backoffice_tag_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_backoffice_tag_read', [], Response::HTTP_SEE_OTHER);
     }
 }

@@ -32,22 +32,22 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_bakery_' %} active{% endif %}" href="{{ path('app_backoffice_bakery_index') }}">Boulangeries</a>
+                                <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_bakery_' %} active{% endif %}" href="{{ path('app_backoffice_bakery_read') }}">Boulangeries</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_user_' %} active{% endif %}" href="{{ path('app_backoffice_user_index') }}">Utilisateurs</a>
+                                <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_user_' %} active{% endif %}" href="{{ path('app_backoffice_user_read') }}">Utilisateurs</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_product_' %} active{% endif %}" href="{{ path('app_backoffice_product_index') }}">Produits</a>
+                                <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_product_' %} active{% endif %}" href="{{ path('app_backoffice_product_read') }}">Produits</a>
                             </li>
                              <li class="nav-item">
-                                <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_tag_' %} active{% endif %}" href="{{ path('app_backoffice_tag_index') }}">Tags</a>
+                                <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_tag_' %} active{% endif %}" href="{{ path('app_backoffice_tag_read') }}">Tags</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_order_' %} active{% endif %}" href="{{ path('app_backoffice_order_index') }}">Commandes</a>
+                                <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_order_' %} active{% endif %}" href="{{ path('app_backoffice_order_read') }}">Commandes</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_category_' %} active{% endif %}" href="{{ path('app_backoffice_category_index') }}">Categories</a>
+                                <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_category_' %} active{% endif %}" href="{{ path('app_backoffice_category_read') }}">Categories</a>
                             </li>
                         </ul>
                         
@@ -60,7 +60,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="#">Profil</a></li>
-                                    <li><a class="dropdown-item" href="{{ path('app_backoffice_bakery_index') }}">Backoffice</a></li>
+                                    <li><a class="dropdown-item" href="{{ path('app_backoffice_bakery_read') }}">Backoffice</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>

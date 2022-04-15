@@ -16,11 +16,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class CategoryController extends AbstractController
 {
     /**
-     * @Route("/", name="app_backoffice_category_index", methods={"GET"})
+     * @Route("/", name="app_backoffice_category_read", methods={"GET"})
      */
-    public function index(CategoryRepository $categoryRepository): Response
+    public function read(CategoryRepository $categoryRepository): Response
     {
-        return $this->render('backoffice/category/index.html.twig', [
+        return $this->render('backoffice/category/read.html.twig', [
             'categories' => $categoryRepository->findAll(),
         ]);
     }
@@ -39,7 +39,7 @@ class CategoryController extends AbstractController
 
             $this->addFlash('success', 'catégorie ajoutée.');
 
-            return $this->redirectToRoute('app_backoffice_category_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_backoffice_category_read', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('backoffice/category/new.html.twig', [
@@ -71,7 +71,7 @@ class CategoryController extends AbstractController
 
             $this->addFlash('success', 'catégorie modifiée.');
 
-            return $this->redirectToRoute('app_backoffice_category_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_backoffice_category_read', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('backoffice/category/edit.html.twig', [
@@ -91,6 +91,6 @@ class CategoryController extends AbstractController
 
         $this->addFlash('success', $category->getName() . ', supprimé.');
 
-        return $this->redirectToRoute('app_backoffice_category_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_backoffice_category_read', [], Response::HTTP_SEE_OTHER);
     }
 }

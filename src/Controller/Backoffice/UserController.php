@@ -17,11 +17,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/", name="app_backoffice_user_index", methods={"GET"})
+     * @Route("/", name="app_backoffice_user_read", methods={"GET"})
      */
-    public function index(UserRepository $userRepository): Response
+    public function read(UserRepository $userRepository): Response
     {
-        return $this->render('backoffice/user/index.html.twig', [
+        return $this->render('backoffice/user/read.html.twig', [
             'users' => $userRepository->findAll(),
         ]);
     }
@@ -45,7 +45,7 @@ class UserController extends AbstractController
 
             $this->addFlash('success', 'utilisateur ajouté.');
 
-            return $this->redirectToRoute('app_backoffice_user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_backoffice_user_read', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('backoffice/user/new.html.twig', [
@@ -87,7 +87,7 @@ class UserController extends AbstractController
 
             $this->addFlash('success', 'utilisateur modifié.');
 
-            return $this->redirectToRoute('app_backoffice_user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_backoffice_user_read', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('backoffice/user/edit.html.twig', [
@@ -107,6 +107,6 @@ class UserController extends AbstractController
 
         $this->addFlash('success', 'utilisateur supprimé.');
 
-        return $this->redirectToRoute('app_backoffice_user_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_backoffice_user_read', [], Response::HTTP_SEE_OTHER);
     }
 }

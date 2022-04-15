@@ -17,11 +17,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class BakeryController extends AbstractController
 {
     /**
-     * @Route("/", name="app_backoffice_bakery_index", methods={"GET"})
+     * @Route("/", name="app_backoffice_bakery_read", methods={"GET"})
      */
-    public function index(BakeryRepository $bakeryRepository): Response
+    public function read(BakeryRepository $bakeryRepository): Response
     {
-        return $this->render('backoffice/bakery/index.html.twig', [
+        return $this->render('backoffice/bakery/read.html.twig', [
             'bakeries' => $bakeryRepository->findAll(),
         ]);
     }
@@ -40,7 +40,7 @@ class BakeryController extends AbstractController
 
             $this->addFlash('success', 'boulangerie ajoutée.');
 
-            return $this->redirectToRoute('app_backoffice_bakery_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_backoffice_bakery_read', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('backoffice/bakery/new.html.twig', [
@@ -72,7 +72,7 @@ class BakeryController extends AbstractController
 
             $this->addFlash('success', 'boulangerie modifiée.');
 
-            return $this->redirectToRoute('app_backoffice_bakery_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_backoffice_bakery_read', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('backoffice/bakery/edit.html.twig', [
@@ -92,6 +92,6 @@ class BakeryController extends AbstractController
 
         $this->addFlash('success', 'boulangerie supprimée.');
 
-        return $this->redirectToRoute('app_backoffice_bakery_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_backoffice_bakery_read', [], Response::HTTP_SEE_OTHER);
     }
 }

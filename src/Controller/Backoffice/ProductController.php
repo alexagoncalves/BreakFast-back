@@ -18,11 +18,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/", name="app_backoffice_product_index", methods={"GET"})
+     * @Route("/", name="app_backoffice_product_read", methods={"GET"})
      */
-    public function index(ProductRepository $productRepository): Response
+    public function read(ProductRepository $productRepository): Response
     {
-        return $this->render('backoffice/product/index.html.twig', [
+        return $this->render('backoffice/product/read.html.twig', [
             'products' => $productRepository->findAll(),
         ]);
     }
@@ -41,7 +41,7 @@ class ProductController extends AbstractController
 
             $this->addFlash('success', 'produit ajouté.');
 
-            return $this->redirectToRoute('app_backoffice_product_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_backoffice_product_read', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('backoffice/product/new.html.twig', [
@@ -73,7 +73,7 @@ class ProductController extends AbstractController
 
             $this->addFlash('success', 'produit modifié.');
 
-            return $this->redirectToRoute('app_backoffice_product_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_backoffice_product_read', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('backoffice/product/edit.html.twig', [
@@ -93,6 +93,6 @@ class ProductController extends AbstractController
             $this->addFlash('success', 'produit supprimé.');
         }
 
-        return $this->redirectToRoute('app_backoffice_product_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_backoffice_product_read', [], Response::HTTP_SEE_OTHER);
     }
 }
