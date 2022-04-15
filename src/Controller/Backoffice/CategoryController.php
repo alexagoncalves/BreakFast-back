@@ -26,9 +26,9 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="app_backoffice_category_new", methods={"GET", "POST"})
+     * @Route("/create", name="app_backoffice_category_create", methods={"GET", "POST"})
      */
-    public function new(Request $request, CategoryRepository $categoryRepository): Response
+    public function create(Request $request, CategoryRepository $categoryRepository): Response
     {
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
@@ -42,7 +42,7 @@ class CategoryController extends AbstractController
             return $this->redirectToRoute('app_backoffice_category_read', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('backoffice/category/new.html.twig', [
+        return $this->renderForm('backoffice/category/create.html.twig', [
             'category' => $category,
             'form' => $form,
         ]);
@@ -59,9 +59,9 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="app_backoffice_category_edit", methods={"GET", "POST"})
+     * @Route("/{id}/update", name="app_backoffice_category_update", methods={"GET", "POST"})
      */
-    public function edit(Request $request, Category $category, CategoryRepository $categoryRepository): Response
+    public function update(Request $request, Category $category, CategoryRepository $categoryRepository): Response
     {
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
@@ -74,7 +74,7 @@ class CategoryController extends AbstractController
             return $this->redirectToRoute('app_backoffice_category_read', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('backoffice/category/edit.html.twig', [
+        return $this->renderForm('backoffice/category/update.html.twig', [
             'category' => $category,
             'form' => $form,
         ]);

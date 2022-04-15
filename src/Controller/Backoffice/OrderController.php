@@ -27,9 +27,9 @@ class OrderController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="app_backoffice_order_new", methods={"GET", "POST"})
+     * @Route("/create", name="app_backoffice_order_create", methods={"GET", "POST"})
      */
-    public function new(Request $request, OrderRepository $orderRepository): Response
+    public function create(Request $request, OrderRepository $orderRepository): Response
     {
         $order = new Order();
         $form = $this->createForm(OrderType::class, $order);
@@ -40,7 +40,7 @@ class OrderController extends AbstractController
             return $this->redirectToRoute('app_backoffice_order_read', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('backoffice/order/new.html.twig', [
+        return $this->renderForm('backoffice/order/create.html.twig', [
             'order' => $order,
             'form' => $form,
         ]);
@@ -57,9 +57,9 @@ class OrderController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="app_backoffice_order_edit", methods={"GET", "POST"})
+     * @Route("/{id}/update", name="app_backoffice_order_update", methods={"GET", "POST"})
      */
-    public function edit(Request $request, Order $order, OrderRepository $orderRepository): Response
+    public function update(Request $request, Order $order, OrderRepository $orderRepository): Response
     {
         $form = $this->createForm(OrderType::class, $order);
         $form->handleRequest($request);
@@ -69,7 +69,7 @@ class OrderController extends AbstractController
             return $this->redirectToRoute('app_backoffice_order_read', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('backoffice/order/edit.html.twig', [
+        return $this->renderForm('backoffice/order/update.html.twig', [
             'order' => $order,
             'form' => $form,
         ]);

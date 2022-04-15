@@ -27,9 +27,9 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="app_backoffice_user_new", methods={"GET", "POST"})
+     * @Route("/create", name="app_backoffice_user_create", methods={"GET", "POST"})
      */
-    public function new(Request $request, UserRepository $userRepository, UserPasswordHasherInterface $userPasswordHasher): Response
+    public function create(Request $request, UserRepository $userRepository, UserPasswordHasherInterface $userPasswordHasher): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -48,7 +48,7 @@ class UserController extends AbstractController
             return $this->redirectToRoute('app_backoffice_user_read', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('backoffice/user/new.html.twig', [
+        return $this->renderForm('backoffice/user/create.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);
@@ -65,9 +65,9 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="app_backoffice_user_edit", methods={"GET", "POST"})
+     * @Route("/{id}/update", name="app_backoffice_user_update", methods={"GET", "POST"})
      */
-    public function edit(Request $request, User $user, UserRepository $userRepository, UserPasswordHasherInterface $userPasswordHasher): Response
+    public function update(Request $request, User $user, UserRepository $userRepository, UserPasswordHasherInterface $userPasswordHasher): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -90,7 +90,7 @@ class UserController extends AbstractController
             return $this->redirectToRoute('app_backoffice_user_read', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('backoffice/user/edit.html.twig', [
+        return $this->renderForm('backoffice/user/update.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);

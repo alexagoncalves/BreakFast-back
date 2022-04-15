@@ -26,9 +26,9 @@ class TagController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="app_backoffice_tag_new", methods={"GET", "POST"})
+     * @Route("/create", name="app_backoffice_tag_create", methods={"GET", "POST"})
      */
-    public function new(Request $request, TagRepository $tagRepository): Response
+    public function create(Request $request, TagRepository $tagRepository): Response
     {
         $tag = new Tag();
         $form = $this->createForm(TagType::class, $tag);
@@ -39,7 +39,7 @@ class TagController extends AbstractController
             return $this->redirectToRoute('app_backoffice_tag_read', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('backoffice/tag/new.html.twig', [
+        return $this->renderForm('backoffice/tag/create.html.twig', [
             'tag' => $tag,
             'form' => $form,
         ]);
@@ -56,9 +56,9 @@ class TagController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="app_backoffice_tag_edit", methods={"GET", "POST"})
+     * @Route("/{id}/update", name="app_backoffice_tag_update", methods={"GET", "POST"})
      */
-    public function edit(Request $request, Tag $tag, TagRepository $tagRepository): Response
+    public function update(Request $request, Tag $tag, TagRepository $tagRepository): Response
     {
         $form = $this->createForm(TagType::class, $tag);
         $form->handleRequest($request);
@@ -68,7 +68,7 @@ class TagController extends AbstractController
             return $this->redirectToRoute('app_backoffice_tag_read', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('backoffice/tag/edit.html.twig', [
+        return $this->renderForm('backoffice/tag/update.html.twig', [
             'tag' => $tag,
             'form' => $form,
         ]);
