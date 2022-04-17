@@ -17,19 +17,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/", name="app_backoffice_user_index", methods={"GET"})
+     * @Route("/", name="app_backoffice_user_read", methods={"GET"})
      */
-    public function index(UserRepository $userRepository): Response
+    public function read(UserRepository $userRepository): Response
     {
-        return $this->render('backoffice/user/index.html.twig', [
+        return $this->render('backoffice/user/read.html.twig', [
             'users' => $userRepository->findAll(),
         ]);
     }
 
     /**
-     * @Route("/new", name="app_backoffice_user_new", methods={"GET", "POST"})
+     * @Route("/create", name="app_backoffice_user_create", methods={"GET", "POST"})
      */
-    public function new(Request $request, UserRepository $userRepository, UserPasswordHasherInterface $userPasswordHasher): Response
+    public function create(Request $request, UserRepository $userRepository, UserPasswordHasherInterface $userPasswordHasher): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -45,10 +45,10 @@ class UserController extends AbstractController
 
             $this->addFlash('success', 'utilisateur ajouté.');
 
-            return $this->redirectToRoute('app_backoffice_user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_backoffice_user_read', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('backoffice/user/new.html.twig', [
+        return $this->renderForm('backoffice/user/create.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);
@@ -65,9 +65,9 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="app_backoffice_user_edit", methods={"GET", "POST"})
+     * @Route("/{id}/update", name="app_backoffice_user_update", methods={"GET", "POST"})
      */
-    public function edit(Request $request, User $user, UserRepository $userRepository, UserPasswordHasherInterface $userPasswordHasher): Response
+    public function update(Request $request, User $user, UserRepository $userRepository, UserPasswordHasherInterface $userPasswordHasher): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -87,10 +87,10 @@ class UserController extends AbstractController
 
             $this->addFlash('success', 'utilisateur modifié.');
 
-            return $this->redirectToRoute('app_backoffice_user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_backoffice_user_read', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('backoffice/user/edit.html.twig', [
+        return $this->renderForm('backoffice/user/update.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);
@@ -107,6 +107,6 @@ class UserController extends AbstractController
 
         $this->addFlash('success', 'utilisateur supprimé.');
 
-        return $this->redirectToRoute('app_backoffice_user_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_backoffice_user_read', [], Response::HTTP_SEE_OTHER);
     }
 }
