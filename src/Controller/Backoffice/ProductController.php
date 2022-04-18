@@ -7,6 +7,8 @@ use App\Entity\Tag;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
 use App\Repository\TagRepository;
+use Doctrine\ORM\EntityManager;
+use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -50,16 +52,32 @@ class ProductController extends AbstractController
         ]);
     }
 
-    /**
+     /**
      * @Route("/{id}", name="app_backoffice_product_show", methods={"GET"})
      */
-    public function show(Product $product): Response
+    public function showWithTag(ProductRepository $productRepository, int $id): Response
     {
+        $product = $productRepository->findOneByIdJoinedToTag($id);
+        
+        $tag = $product->getTag();
+
         return $this->render('backoffice/product/show.html.twig', [
             'product' => $product,
+            'tags' => $tag
         ]);
     }
 
+    // /**
+    //  * @Route("/{id}", name="app_backoffice_product_show", methods={"GET"})
+    //  */
+    // public function show(Product $product): Response
+    // {
+    //     return $this->render('backoffice/product/show.html.twig', [
+    //         'product' => $product,
+    //     ]);
+    // }
+
+ 
     /**
      * @Route("/{id}/update", name="app_backoffice_product_update", methods={"GET", "POST"})
      */

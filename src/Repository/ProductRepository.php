@@ -65,6 +65,23 @@ class ProductRepository extends ServiceEntityRepository
 
     }
 
+    /**
+    * Find all products by tag
+    */
+    public function findOneByIdJoinedToTag(int $productId): ?Product
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT p, t
+            FROM App\Entity\Product p
+            INNER JOIN p.tag t
+            WHERE p.id = :id'
+        )->setParameter('id', $productId);
+
+        return $query->getOneOrNullResult();
+    }
+
     // /**
     //  * @return Product[] Returns an array of Product objects
     //  */

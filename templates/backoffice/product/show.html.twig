@@ -46,7 +46,11 @@
                 <!-- TODO intégrer les tags associés au produit-->
                 <tr>
                     <th>Tags</th>
-                    <td></td>
+                    <td>
+                        {% for tag in tags %}
+                            {{ tag.name }} /
+                        {% endfor %}
+                    </td>
                 </tr>
 
             </tbody>
