@@ -19,11 +19,20 @@ class BakeryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class)
-            ->add('address', TextType::class)
-            ->add('profile_img', UrlType::class)
-            ->add('phone_number', NumberType::class)
+            ->add('name', TextType::class, [
+                'label' => 'nom'
+            ])
+            ->add('address', TextType::class, [
+                'label' => 'adresse'
+            ])
+            ->add('profile_img', UrlType::class, [
+                'label' => 'photo de la boutique'
+            ])
+            ->add('phone_number', NumberType::class, [
+                'label' => 'numéro de téléphone'
+            ])
             ->add('rating', ChoiceType::class, [
+                'label' => 'note',
                 'choices'  => [
                     '1' => '1',
                     '2' => '2',
@@ -35,15 +44,21 @@ class BakeryType extends AbstractType
                 'expanded' => false
             ])
             ->add('status', ChoiceType::class, [
+                'label' => 'statut',
                 'choices'  => [
                     'Activé' => '1',
                     'Desactivé' => '0'
                 ],
                 'expanded' => true
                 ])
-            ->add('delivery_fees', NumberType::class)
-            ->add('delivery_time', NumberType::class)
+            ->add('delivery_fees', NumberType::class, [
+                'label' => 'frais de livraison'
+            ])
+            ->add('delivery_time', NumberType::class, [
+                'label' => 'délai de livraison'
+            ])
             ->add('user', EntityType::class, [
+                'label' => 'utilisateur',
                 'class' => User::class,
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('u')
