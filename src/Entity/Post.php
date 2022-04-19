@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\PostRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -17,32 +18,37 @@ class Post
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @Groups ({"get_posts_list", "get_post_by_id"})
-     * 
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups ({"get_posts_list", "get_post_by_id"})
-     * 
+     * @Assert\NotBlank
+     * @Assert\Length(min = 10, minMessage = "Il faut au minimum {{ limit }} caractères")
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups ({"get_posts_list", "get_post_by_id"}) 
+     * @Assert\NotBlank
+     * @Assert\Length(min = 10, minMessage = "Il faut au minimum {{ limit }} caractères"
      */
     private $summary;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups ({"get_posts_list", "get_post_by_id"}) 
+     * @Assert\NotBlank
+     * @Assert\Length(min = 10, minMessage = "Il faut au minimum {{ limit }} caractères"
      */
     private $content;
 
     /**
      * @ORM\Column(type="date")
      * @Groups ({"get_posts_list", "get_post_by_id"}) 
+     * @Assert\NotBlank
      */
     private $publication_date;
 
@@ -50,6 +56,7 @@ class Post
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="posts")
      * @ORM\JoinColumn(nullable=false)
      * @Groups ({"get_posts_list", "get_post_by_id"})
+     * @Assert\NotBlank
      */
     private $author;
 

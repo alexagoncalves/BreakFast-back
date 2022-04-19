@@ -39,7 +39,7 @@ class Bakery
      * @Groups({"api_products_list"})
      * @Groups({"get_bakeries_list", "get_bakery_by_id"})
      * @Assert\NotBlank
-     * @Assert\Length(min = 2, minMessage = "Il faut au minimum {{ limit }} caractères")
+     * @Assert\Length(min = 5, minMessage = "Il faut au minimum {{ limit }} caractères")
      * 
      */
     private $address;
