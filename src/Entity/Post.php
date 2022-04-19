@@ -17,13 +17,13 @@ class Post
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups ({"get_posts_list", "get_post_by_id"})
+     * @Groups({"get_posts_list", "get_post_by_id"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups ({"get_posts_list", "get_post_by_id"})
+     * @Groups({"get_posts_list", "get_post_by_id"})
      * @Assert\NotBlank
      * @Assert\Length(min = 5, minMessage = "Il faut au minimum {{ limit }} caractères")
      */
@@ -31,7 +31,7 @@ class Post
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups ({"get_posts_list", "get_post_by_id"}) 
+     * @Groups({"get_posts_list", "get_post_by_id"}) 
      * @Assert\NotBlank
      * @Assert\Length(min = 10, minMessage = "Il faut au minimum {{ limit }} caractères")
      */
@@ -39,7 +39,7 @@ class Post
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups ({"get_posts_list", "get_post_by_id"}) 
+     * @Groups({"get_posts_list", "get_post_by_id"}) 
      * @Assert\NotBlank
      * @Assert\Length(min = 10, minMessage = "Il faut au minimum {{ limit }} caractères")
      */
@@ -47,7 +47,7 @@ class Post
 
     /**
      * @ORM\Column(type="date")
-     * @Groups ({"get_posts_list", "get_post_by_id"}) 
+     * @Groups({"get_posts_list", "get_post_by_id"}) 
      * @Assert\NotBlank
      */
     private $publication_date;
@@ -55,7 +55,7 @@ class Post
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="posts")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups ({"get_posts_list", "get_post_by_id"})
+     * @Groups({"get_posts_list", "get_post_by_id"}) 
      * @Assert\NotBlank
      */
     private $author;

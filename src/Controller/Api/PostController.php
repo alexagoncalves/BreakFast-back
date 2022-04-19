@@ -36,7 +36,7 @@ class PostController extends AbstractController
     {
         // if the id doesn't correspond to any post
         if ($post === null) {
-            return $this->json(['error' => 'Boulangerie non trouvé.'], Response::HTTP_NOT_FOUND);
+            return $this->json(['error' => 'Article non trouvé.'], Response::HTTP_NOT_FOUND);
         }
 
         return $this->json($post, Response::HTTP_OK, [], ['groups' => 'get_post_by_id']);

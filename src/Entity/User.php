@@ -86,6 +86,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\OneToMany(targetEntity=Post::class, mappedBy="author")
+     * @Groups ("api_user")
+     * 
      */
     private $posts;
 
