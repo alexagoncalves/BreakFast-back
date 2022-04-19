@@ -46,15 +46,30 @@ class OrderController extends AbstractController
         ]);
     }
 
-    /**
+     /**
      * @Route("/{id}", name="app_backoffice_order_show", methods={"GET"})
      */
-    public function show(Order $order): Response
+    public function showWithProduct(OrderRepository $orderRepository, int $id): Response
     {
+        $order = $orderRepository->findOneByIdJoinedToProduct($id);
+        
+        $product = $order->getProduct();
+
         return $this->render('backoffice/order/show.html.twig', [
             'order' => $order,
+            'product' => $product
         ]);
     }
+
+    // /**
+    //  * @Route("/{id}", name="app_backoffice_order_show", methods={"GET"})
+    //  */
+    // public function show(Order $order): Response
+    // {
+    //     return $this->render('backoffice/order/show.html.twig', [
+    //         'order' => $order,
+    //     ]);
+    // }
 
     /**
      * @Route("/{id}/update", name="app_backoffice_order_update", methods={"GET", "POST"})
