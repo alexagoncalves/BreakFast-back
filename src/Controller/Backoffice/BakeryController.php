@@ -17,19 +17,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class BakeryController extends AbstractController
 {
     /**
-     * @Route("/", name="app_backoffice_bakery_index", methods={"GET"})
+     * @Route("/", name="app_backoffice_bakery_read", methods={"GET"})
      */
-    public function index(BakeryRepository $bakeryRepository): Response
+    public function read(BakeryRepository $bakeryRepository): Response
     {
-        return $this->render('backoffice/bakery/index.html.twig', [
+        return $this->render('backoffice/bakery/read.html.twig', [
             'bakeries' => $bakeryRepository->findAll(),
         ]);
     }
 
     /**
-     * @Route("/new", name="app_backoffice_bakery_new", methods={"GET", "POST"})
+     * @Route("/create", name="app_backoffice_bakery_create", methods={"GET", "POST"})
      */
-    public function new(Request $request, BakeryRepository $bakeryRepository): Response
+    public function create(Request $request, BakeryRepository $bakeryRepository): Response
     {
         $bakery = new Bakery();
         $form = $this->createForm(BakeryType::class, $bakery);
@@ -40,10 +40,10 @@ class BakeryController extends AbstractController
 
             $this->addFlash('success', 'boulangerie ajoutée.');
 
-            return $this->redirectToRoute('app_backoffice_bakery_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_backoffice_bakery_read', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('backoffice/bakery/new.html.twig', [
+        return $this->renderForm('backoffice/bakery/create.html.twig', [
             'bakery' => $bakery,
             'form' => $form,
         ]);
@@ -60,9 +60,9 @@ class BakeryController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="app_backoffice_bakery_edit", methods={"GET", "POST"})
+     * @Route("/{id}/update", name="app_backoffice_bakery_update", methods={"GET", "POST"})
      */
-    public function edit(Request $request, Bakery $bakery, BakeryRepository $bakeryRepository): Response
+    public function update(Request $request, Bakery $bakery, BakeryRepository $bakeryRepository): Response
     {
         $form = $this->createForm(BakeryType::class, $bakery);
         $form->handleRequest($request);
@@ -72,10 +72,10 @@ class BakeryController extends AbstractController
 
             $this->addFlash('success', 'boulangerie modifiée.');
 
-            return $this->redirectToRoute('app_backoffice_bakery_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_backoffice_bakery_read', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('backoffice/bakery/edit.html.twig', [
+        return $this->renderForm('backoffice/bakery/update.html.twig', [
             'bakery' => $bakery,
             'form' => $form,
         ]);
@@ -92,6 +92,6 @@ class BakeryController extends AbstractController
 
         $this->addFlash('success', 'boulangerie supprimée.');
 
-        return $this->redirectToRoute('app_backoffice_bakery_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_backoffice_bakery_read', [], Response::HTTP_SEE_OTHER);
     }
 }

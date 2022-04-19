@@ -45,6 +45,20 @@ class OrderRepository extends ServiceEntityRepository
         }
     }
 
+    public function findOneByIdJoinedToProduct(int $productId): ?Order
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT o, p
+            FROM App\Entity\Order o
+            INNER JOIN o.product p
+            WHERE o.id = :id'
+        )->setParameter('id', $productId);
+
+        return $query->getOneOrNullResult();
+    }
+
     // /**
     //  * @return Order[] Returns an array of Order objects
     //  */
