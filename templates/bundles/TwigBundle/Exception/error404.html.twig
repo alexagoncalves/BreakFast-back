@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page non trouvée
+{% endblock %}
+
+{% block body %}
+	<div class="home-header container-fluid mt-3 border-0">
+		<div class="row">
+			<div class="col-12 p-0">
+				<div id="header-text" class="text-center">
+
+					<h1>Page non trouvée</h1>
+                    
+					<p>La page que vous cherchez n'existe pas</p>
+					<img height="100" src="{{ asset('images/breakfast-logo-light.png') }}">
+
+					<p>Code l'erreur :
+						{{ status_code }}</p>
+					<p>Message de l'erreur :
+						{{ status_text }}</p>
+
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
