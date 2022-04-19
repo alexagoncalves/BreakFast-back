@@ -25,7 +25,7 @@ class Post
      * @ORM\Column(type="string", length=255)
      * @Groups ({"get_posts_list", "get_post_by_id"})
      * @Assert\NotBlank
-     * @Assert\Length(min = 10, minMessage = "Il faut au minimum {{ limit }} caractères")
+     * @Assert\Length(min = 5, minMessage = "Il faut au minimum {{ limit }} caractères")
      */
     private $title;
 
