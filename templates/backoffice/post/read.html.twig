@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Articles{% endblock %}
+
+{% block body %}
+    <h1 class="text-uppercase">Liste des Articles</h1>
+
+    <a class="btn btn-outline-light text-uppercase" href="{{ path('app_backoffice_post_create') }}">Créer un Article</a>
+
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th class="text-center">Id</th>
+                <th class="text-center">Titre</th>
+                <th class="text-center">Résumé</th>
+                <th class="text-center">Contenu</th>
+                <th class="text-center">Date de Publication</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for post in posts %}
+            <tr>
+                <td class="align-middle text-center">{{ post.id }}</td>
+                <td class="align-middle text-center">{{ post.title }}</td>
+                <td class="align-middle text-center">{{ post.summary }}</td>
+                <td class="align-middle text-center">{{ post.content }}</td>
+                <td class="align-middle text-center">{{ post.publicationDate ? post.publicationDate|date('Y-m-d') : '' }}</td>
+                <td class="align-middle text-center">
+                    <a class="btn btn-outline-light text-uppercase" href="{{ path('app_backoffice_post_show', {'id': post.id}) }}">Détails</a>
+                    <a class="btn btn-outline-light text-uppercase" href="{{ path('app_backoffice_post_update', {'id': post.id}) }}">Mettre à jour</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun Article trouvé.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

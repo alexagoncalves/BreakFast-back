@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvel Article{% endblock %}
+
+{% block body %}
+    <h1 class="text-uppercase">Créer un Article</h1>
+
+    <a class="btn btn-outline-light text-uppercase" href="{{ path('app_backoffice_post_read') }}">Retour à la liste</a>
+
+    {{ include('backoffice/post/_form.html.twig') }}
+
+{% endblock %}

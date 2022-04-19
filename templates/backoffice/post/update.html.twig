@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mise à jour Article{% endblock %}
+
+{% block body %}
+    <h1 class="text-uppercase">Mise à jour Article nº {{ post.id }}</h1>
+
+    <a class="btn btn-outline-light text-uppercase mb-2" href="{{ path('app_backoffice_post_read') }}">Retour à la liste</a>
+
+    {{ include('backoffice/post/_form.html.twig', {'button_label': 'Valider'}) }}
+
+    {{ include('backoffice/post/_delete_form.html.twig') }}
+{% endblock %}

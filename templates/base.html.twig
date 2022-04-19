@@ -49,6 +49,9 @@
                             <li class="nav-item">
                                 <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_order_' %} active{% endif %}" href="{{ path('app_backoffice_order_read') }}">Commandes</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if app.request.get('_route') starts with 'app_backoffice_post_' %} active{% endif %}" href="{{ path('app_backoffice_post_read') }}">Blog</a>
+                            </li>
                         </ul>
                         
                        {% if app.user %}
