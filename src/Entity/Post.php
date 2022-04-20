@@ -47,7 +47,7 @@ class Post
 
     /**
      * @ORM\Column(type="date")
-     * @Groups({"get_posts_list", "get_post_by_id"}) 
+     * @Groups({"get_posts_list", "get_post_by_id"})
      * @Assert\NotBlank
      */
     private $publication_date;

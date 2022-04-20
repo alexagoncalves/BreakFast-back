@@ -52,8 +52,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", length=255)
      * @Groups({"get_bakeries_list", "get_bakery_by_id"})
      * @Groups ("api_user")
+     * @Groups({"get_posts_list", "get_post_by_id"})
      * @Assert\NotBlank
-     * 
      */
     private $name;
 
@@ -87,7 +87,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\OneToMany(targetEntity=Post::class, mappedBy="author")
      * @Groups ("api_user")
-     * 
      */
     private $posts;
 
