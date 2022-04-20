@@ -89,12 +89,14 @@ class UserController extends AbstractController
     }
     
     /**
+     * @IsGranted("ROLE_ADMIN")
      * Method to get a list of all users
      * @Route("/api/user", name="api_user_list", methods="GET")
      * @return Response
      */
     public function userList(UserRepository $userRepository): Response
     {
+        
         // préparer les données
         $userList = $userRepository->findAll();
 
