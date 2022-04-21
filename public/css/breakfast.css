@@ -4,3 +4,22 @@
 h1 {
     font-size: 2em;
 }
+#redirect {
+    font-size: 1.5em;
+    margin-top: 1.5em;
+}
+a:hover {
+    color: white;
+}
+a {
+    color: #D7B19D;
+}
+#navbarDropdown {
+    color: #D7B19D;
+}
+.header-logo__title {
+    color: #D7B19D;
+    font-size: 1.5em;
+    margin-left: 0.5em;
+    margin-right: 1em;
+}
