@@ -52,7 +52,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/api/login, roles: PUBLIC_ACCESS }
-        # - { path: ^/api/user, roles: ROLE_ADMIN }
+        - { path: ^/api/user, roles: ROLE_ADMIN }
         - { path: ^/backoffice/login, roles: PUBLIC_ACCESS }
         - { path: ^/backoffice/logout, roles: PUBLIC_ACCESS }
         - { path: ^/backoffice/, roles: ROLE_ADMIN }
