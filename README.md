@@ -1,5 +1,10 @@
 # BreakFast
 
+<p align="center">
+  <img width="460" height="300" src="https://github.com/alexagoncalves/BreakFast-back/blob/main/public/images/breakfast-responsive.png">
+</p>
+
+
 ## INTRODUCTION
 Dans un environnement rural où la voiture devient vite obligatoire pour aller
 chercher du pain ou commander des viennoiseries, une solution de petit déjeuner à domicile a été pensée.
